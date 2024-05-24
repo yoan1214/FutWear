@@ -9,7 +9,8 @@ try {
     // Establecer el modo de error de PDO a excepción
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $sql = "SELECT * FROM Equipo"; // Asegúrate de que el nombre de la tabla es correcto
+    // Actualizar la consulta SQL para ordenar por nombre
+    $sql = "SELECT * FROM Equipo ORDER BY nombre ASC"; // Asegúrate de que el nombre del campo es correcto
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
 
