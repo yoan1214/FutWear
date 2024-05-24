@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Sexo, Teléfono, Dirección, Código_Postal, Provincia, Método_de_Pago, Admin) 
-        VALUES (:nombre, :apellidos, :correo, :passw, :sexo, :telefono, :direccion, :codigo_postal, :provincia, :metodo_pago, :admin)";
+        VALUES (:nombre, :apellidos, :correo, :passw, :sexo, :telefono, :direccion, :codigo_postal, :provincia, :metodo_pago, false)";
 
 $stmt = $bd->prepare($sql);
 $stmt->bindParam(':nombre', $nombre);
@@ -34,7 +34,7 @@ $stmt->bindParam(':direccion', $direccion);
 $stmt->bindParam(':codigo_postal', $codigo_postal);
 $stmt->bindParam(':provincia', $provincia);
 $stmt->bindParam(':metodo_pago', $metodo_pago);
-$stmt->bindValue(':admin', false, PDO::PARAM_BOOL); // Asigna false directamente
+
 
 if ($stmt->execute()) {
     echo "Usuario registrado correctamente";  // Esta respuesta se maneja en el JS
@@ -43,7 +43,11 @@ if ($stmt->execute()) {
 }
 
     } catch (PDOException $e) {
-        echo "Falló la conexión: " . $e->getMessage();
-    }
+        if ($e->getCode() == 23000) { // Código de error para duplicados
+            echo "El correo electrónico ya está registrado.";
+        } else {
+            echo "Error en la base de datos: " . $e->getMessage();
+        }
+}
 }
 ?>

@@ -20,7 +20,7 @@ try {
         Nombre VARCHAR(100),
         Apellidos VARCHAR(100),
         Sexo ENUM('Masculino', 'Femenino'),
-        Correo VARCHAR(100),
+        Correo VARCHAR(100) Unique,
         Contraseña VARCHAR(100),
         Teléfono INTEGER,
         Dirección VARCHAR(255),

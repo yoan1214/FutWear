@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Equipos</title>
-    <link rel="stylesheet" href="../Css/equipaciones.css">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="../Css/usuario.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-
-    </script>
+    
 </head>
 <body>
     <header>
@@ -73,20 +71,61 @@
 
             </div>
         </div>
-        <div class="headerbot">
+        <!-- <div class="headerbot">
             <p>
-                ENVÍOS GRATUITOS PARA PEDIDOS SUPERIORES A 120 €. 60 DÍAS DE
-                DEVOLUCIONES GRATUITAS.
+               Bienvenido a tu Panel de Usuario <span id="nombreUsuario"></span><span id="apellidosUsuario"></span>
             </p>
-        </div>
+        </div> -->
 
     </header>
-        <main>
-            <h1>Catálogo de Equipos</h1>
-    <div class="catalogo" id="catalogo"></div>
-        </main>
-        <div include-html="./partials/footer.html"></div> 
-        <script src="../Javascript/include.js"></script>   
-    <script src="../Javascript/equipaciones.js"></script>
+<main>
+    <div class="user-panel">
+        <h1>Bienvenido a tu panel de usuario <span id="displayNombre"></span> </h1>
+        <h2>Tus datos actuales</h2>
+        <div id="userDataDisplay">
+            <p><strong>Nombre:</strong> <span id="displayNombre"></span></p>
+            <p><strong>Apellidos:</strong> <span id="displayApellidos"></span></p>
+            <p><strong>Correo Electrónico:</strong> <span id="displayCorreo"></span></p>
+            <p><strong>Teléfono:</strong> <span id="displayTelefono"></span></p>
+            <p><strong>Dirección:</strong> <span id="displayDireccion"></span></p>
+            <p><strong>Código Postal:</strong> <span id="displayCodigoPostal"></span></p>
+            <p><strong>Provincia:</strong> <span id="displayProvincia"></span></p>
+            <p><strong>Método de Pago:</strong> <span id="displayMetodoPago"></span></p>
+        </div>
+    
+        <h2>Actualizar tus datos</h2>
+        <form id="userForm">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono">
+    
+            <label for="password">Nueva Contraseña (dejar en blanco para mantener la actual):</label>
+            <input type="password" id="password" name="password">
+    
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+    
+            <label for="codigo_postal">Código Postal:</label>
+            <input type="text" id="codigo_postal" name="codigo_postal">
+    
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" name="provincia">
+    
+            <label for="metodo_pago">Método de Pago:</label>
+            <select id="metodo_pago" name="metodo_pago">
+                <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                <option value="Transferencia bancaria">Transferencia bancaria</option>
+                <option value="PayPal">PayPal</option>
+            </select>
+    
+            <button type="button" id="updateButton">Actualizar Datos</button>
+        </form>
+    </div>
+    
+    
+</main>
+<div include-html="./partials/footer.html"></div> 
+<script src="../Javascript/include.js"></script> 
+<script src="../Javascript/usuario.js"></script>
 </body>
+
 </html>
