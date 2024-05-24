@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Toggle the display of the navbar on click
         navbar.style.display = navbar.style.display === "flex" ? "none" : "flex";
     });
+    
 });
 // funcion del texto mostrar mas
 function showMore() {

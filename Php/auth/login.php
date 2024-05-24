@@ -8,19 +8,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $clave = ""; 
 
     try {
-
         $bd = new PDO($dsn, $usuarioBD, $clave);
-   
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT * from usuarios u where u.Correo=\"$correo\" and u.Contraseña=\"$password\"; ";
-        $resultado = $bd->query($sql);
-        $count = $resultado->rowCount();
-        
+        $sql = "SELECT * FROM usuarios WHERE Correo = :correo AND Contraseña = :password";
+        $stmt = $bd->prepare($sql);
+        $stmt->execute([':correo' => $correo, ':password' => $password]);
+        $count = $stmt->rowCount();
 
         if ($count == 1) {
-            $usuario=$resultado->fetch();
-            header("Location: ../html/index.html");
+            echo "success";
         } else {
             echo "Error de búsqueda";
         }

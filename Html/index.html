@@ -31,8 +31,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="24" height="24">
                         <path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z" fill="white" />
                         <circle cx="12" cy="6" r="6" fill="white" />
-                    </svg>
+                    </svg>Login
                 </a>
+                <button id="login">Inicia sesión</button>
                 <a href="" class="carrito">
                     <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
                         <path d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077Z" fill="white" />
@@ -60,7 +61,9 @@
         </div>
   
     </header>
+    
     <main>
+        
         <div class="video-container" data-auto-id="video-player">
             <video id="videoElement" loop="" muted="" playsinline="" autoplay="" fetchpriority="high">
                 <source src="../Video/arsenal.mp4" type="video/mp4">
@@ -161,15 +164,17 @@
                         </div>
                     </div>
                     <div class="team-card">
-                        <img src="../Images/imgs/mbappe.jpg" alt="Atlético de Madrid">
+                        <img src="../Images/imgs/mbappe.webp" alt="Atlético de Madrid">
                         <div class="team-overlay">
                             <span>PSG</span>
                         </div>
                     </div>
                     <div class="team-card">
-                        <img src="../Images/imgs/florian-wirtz.jpg" alt="Más Equipos">
+                        <a href="./equipos.html">
+                        <img src="../Images/imgs/musiala.jpg" alt="Más Equipos">
                         <div class="team-overlay">
                             <span>MÁS EQUIPOS</span>
+                        </a>
                         </div>
                     </div>
                 </div>
@@ -220,6 +225,7 @@
     <div include-html="./partials/footer.html"></div> 
     <script src="../Javascript/include.js"></script>     
     <script src="../Javascript/index.js"></script>
+
   
         
 </body>

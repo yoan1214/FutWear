@@ -1,53 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header></header>
-    <main>
-        <h1>Registro</h1>
-        <form action="" method="post">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre">
-            <br>
-            <label for="apellidos">Apellidos</label>
-            <input type="text" name="apellidos" id="apellidos">
-            <br>
-            <label for="sexo">Sexo</label>
-            <select name="sexo" id="sexo">
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-            </select>
-            <br>
-            <label for="correo">Correo electrónico</label>
-            <input type="email" name="correo" id="correo">
-            <br>
-            <label for="telefono">Teléfono</label>
-            <input type="tel" name="telefono" id="telefono">
-            <br>
-            <label for="direccion">Dirección</label>
-            <input type="text" name="direccion" id="direccion">
-            <br>
-            <label for="codigo_postal">Código Postal</label>
-            <input type="text" name="codigo_postal" id="codigo_postal">
-            <br>
-            <label for="provincia">Provincia</label>
-            <input type="text" name="provincia" id="provincia">
-            <br>
-            <label for="metodo_pago">Método de Pago</label>
-            <select name="metodo_pago" id="metodo_pago">
-                <option value="Tarjeta de crédito">Tarjeta de crédito</option>
-                <option value="Transferencia bancaria">Transferencia bancaria</option>
-                <option value="PayPal">PayPal</option>
-            </select>
-            <br>
-            <input type="submit" value="Registrarse">
-        </form>
-    </main>
-    
-    <footer></footer>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login 01</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../Css/signup.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <header>
+   
+            <div class="headermain">
+                <a href="#" class="logo"><img src="../Images/imgs/Futwear-logo.png" alt="logo" id="logo-header" /></a>
+        <!-- navbar -->
+                <ul class="navbar">
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./catalogo.html">Catalogo</a></li>
+                    <li><a href="./equipos.html">Equipos</a></li>
+                    <li><a href="./novedades.html">Novedades</a></li>
+                    <li><a href="./masPopulares.html">Más Vendido</a></li>
+                </ul>
+                <div class="headerdetails">
+                   
+                    <a href="./login.html" class="user-login">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z" fill="white" />
+                            <circle cx="12" cy="6" r="6" fill="white" />
+                        </svg>Login
+                    </a>
+                    <button id="login">Inicia sesión</button>
+                    <a href="" class="carrito">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077Z" fill="white" />
+                            <circle cx="7" cy="22" r="2" fill="white" />
+                            <circle cx="17" cy="22" r="2" fill="white" />
+                        </svg>
+                    </a>
+                    <div  id="menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512" xml:space="preserve" width="24" height="24">
+                            <g fill="white">
+                                <path d="M480,224H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
+                                <path d="M32,138.667h448c17.673,0,32-14.327,32-32s-14.327-32-32-32H32c-17.673,0-32,14.327-32,32S14.327,138.667,32,138.667z" />
+                                <path d="M480,373.333H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,373.333,480,373.333z" />
+                            </g>
+                        </svg>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="headerbot">
+                <p>
+                    ENVÍOS GRATUITOS PARA PEDIDOS SUPERIORES A 120 €. 60 DÍAS DE
+                    DEVOLUCIONES GRATUITAS.
+                </p>
+            </div>
+      
+        </header>
+        <main>
+            <div class="centrar">
+                <form class="formulario">
+                    <div class="incio-sesion-row">
+                        <h1 id="formulario-registro">Registro</h1>
+                    </div>
+                    <div class="form-grid">
+                        <div class="texto-campo">
+                            <label for="nombre">Nombre:</label>
+                            <input aria-label="Nombre" type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                        </div>
+                        <div class="texto-campo">
+                            <label for="apellidos">Apellidos:</label>
+                            <input aria-label="Apellidos" type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                        </div>
+                        <div class="texto-campo grid-span-2">
+                            <label for="correo">Correo Electrónico:</label>
+                            <input aria-label="Correo Electrónico" type="email" id="correo" name="correo" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="texto-campo">
+                            <label for="sexo">Sexo:</label>
+                            <select aria-label="Sexo" id="sexo" name="sexo" required>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="texto-campo">
+                            <label for="telefono">Teléfono:</label>
+                            <input aria-label="Teléfono" type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                        </div>
+                        <div class="texto-campo grid-span-2">
+                            <label for="direccion">Dirección:</label>
+                            <input aria-label="Dirección" type="text" id="direccion" name="direccion" placeholder="Dirección" required>
+                        </div>
+                        <div class="texto-campo">
+                            <label for="codigo_postal">Código Postal:</label>
+                            <input aria-label="Código Postal" type="text" id="codigo_postal" name="codigo_postal" placeholder="Código Postal" required>
+                        </div>
+                        <div class="texto-campo">
+                            <label for="provincia">Provincia:</label>
+                            <input aria-label="Provincia" type="text" id="provincia" name="provincia" placeholder="Provincia" required>
+                        </div>
+                        <div class="texto-campo grid-span-2">
+                            <label for="metodo_pago">Método de Pago:</label>
+                            <select aria-label="Método de Pago" id="metodo_pago" name="metodo_pago" required>
+                                <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                                <option value="Transferencia bancaria">Transferencia bancaria</option>
+                                <option value="PayPal">PayPal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="submit" class="formulario__btn_enviar" value="Registrarse">
+                    <div class="formulario__extras">
+                        <a href="#" title="Login">Ya tienes una cuenta? Inicia Sesión</a>
+                    </div>
+                </form>
+            </div>
+            
+            
+            
+        </main>
+        <div include-html="./partials/footer.html"></div> 
+        <script src="../Javascript/include.js"></script>     
+        <script src="../Javascript/signup.js"></script>
+    </body>
 </html>
+
