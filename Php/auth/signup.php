@@ -37,10 +37,11 @@ $stmt->bindParam(':metodo_pago', $metodo_pago);
 $stmt->bindValue(':admin', false, PDO::PARAM_BOOL); // Asigna false directamente
 
 if ($stmt->execute()) {
-    echo "Usuario registrado correctamente";
+    echo "Usuario registrado correctamente";  // Esta respuesta se maneja en el JS
 } else {
-    echo "El usuario no se ha registrado";
+    echo "El usuario no se ha registrado";  // Cualquier fallo devuelve esta respuesta
 }
+
     } catch (PDOException $e) {
         echo "Falló la conexión: " . $e->getMessage();
     }

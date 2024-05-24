@@ -16,20 +16,19 @@
   list-style: none;
   text-decoration: none;
 }
-
-html, body {
-  height: 100%; 
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column; /* Los elementos se organizan en una columna */
-  font-family: "Poppins";
+ html, body {
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Los elementos se organizan en una columna */
+    font-family: "Poppins";
 }
 main {
-  flex: 1; /* Ocupa todo el espacio disponible */
-  display: flex; /* Asegura que el contenido de main también sea flex */
-  flex-direction: column; /* Columna para organizar el contenido de main */
- 
+    flex: 1; /* Ocupa todo el espacio disponible */
+    display: flex; /* Asegura que el contenido de main también sea flex */
+    flex-direction: column; /* Columna para organizar el contenido de main */
+   
 }
 
 header {
@@ -87,7 +86,7 @@ header {
 }
 
 .navbar a:hover {
-  color: red;
+  color: #d3b587;
 }
 
 .headerdetails {
@@ -108,6 +107,27 @@ header {
   z-index: 10001;
   display: none;
 }
+.button-style {
+  background-color: black; /* Fondo negro para combinar con el header */
+  border: none; /* Sin bordes */
+  padding: 10px 20px; /* Padding generoso para mejorar la clickeabilidad */
+  margin-right: 10px; /* Espacio entre los botones */
+  border-radius: 5px; /* Bordes redondeados para un look moderno */
+  
+}
+
+.button-style a {
+  color: white; /* Texto blanco */
+  font-size: 1.1rem; /* Tamaño de fuente coherente con el resto del menú */
+  font-weight: 500; /* Peso semi-bold para que destaque */
+  text-decoration: none; /* No subrayado */
+}
+
+.button-style:hover, .button-style a:hover {
+  background-color: #d3b587; /* Cambio de color en hover para integrar con el esquema del sitio */
+  color: black; /* Cambio de color de texto en hover */
+}
+
 
 @media (max-width: 960px) {
   #menu-icon {

@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../Css/index.css" />
- 
+
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
     <header>
-   
+
         <div class="headermain">
-            <a href="#" class="logo"><img src="../Images/imgs/Futwear-logo.png" alt="logo" id="logo-header" /></a>
-    <!-- navbar -->
+            <a href="./index.html" class="logo"><img src="../Images/imgs/Futwear-logo.png" alt="logo" id="logo-header" /></a>
+            <!-- navbar -->
             <ul class="navbar">
                 <li><a href="./index.html">Inicio</a></li>
                 <li><a href="./catalogo.html">Catalogo</a></li>
@@ -26,31 +27,53 @@
                 <li><a href="./masPopulares.html">Más Vendido</a></li>
             </ul>
             <div class="headerdetails">
-               
-                <a href="./login.html" class="user-login">
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z" fill="white" />
+
+                <a href="./login.html" class="user-login logged-in" >
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"
+                        width="24" height="24">
+                        <path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z"
+                            fill="white" />
                         <circle cx="12" cy="6" r="6" fill="white" />
-                    </svg>Login
+                    </svg>
                 </a>
-                <button id="login">Inicia sesión</button>
-                <a href="" class="carrito">
+                <button id="loginButton" class="no-logged-in button-style"><a href="./login.html">LogIn</a></button>
+                <button id="signupButton" class="no-logged-in button-style"><a href="./signup.html">SignUp</a></button>
+                
+                <a href="" class="admin-only">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"
+                        width="24" height="24">
+                        <path fill="white"
+                            d="m8,12c-3.309,0-6-2.691-6-6S4.691,0,8,0s6,2.691,6,6-2.691,6-6,6Zm14.5,6c0-.46-.089-.895-.218-1.313l1.416-.816-.998-1.733-1.411.813c-.605-.652-1.393-1.125-2.289-1.33v-1.621h-2v1.621c-.896.205-1.685.678-2.289,1.33l-1.411-.813-.998,1.733,1.416.816c-.129.418-.218.853-.218,1.313s.089.895.218,1.313l-1.416.816.998,1.733,1.411-.813c.605.652,1.393,1.125,2.289,1.33v1.621h2v-1.621c.896-.205,1.685-.678,2.289-1.33l1.411.813.998-1.733-1.416-.816c.129-.418.218-.853.218-1.313Zm-4.5,1.5c-.827,0-1.5-.673-1.5-1.5s.673-1.5,1.5-1.5,1.5.673,1.5,1.5-.673,1.5-1.5,1.5Zm-8-1.5c0-1.459.397-2.822,1.079-4h-6.579c-2.481,0-4.5,2.019-4.5,4.5v5.5h12.721c-1.665-1.466-2.721-3.607-2.721-6Z" />
+                    </svg>
+                </a>
+                <a href="" class="carrito logged-in">
                     <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
-                        <path d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077Z" fill="white" />
+                        <path
+                            d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077Z"
+                            fill="white" />
                         <circle cx="7" cy="22" r="2" fill="white" />
                         <circle cx="17" cy="22" r="2" fill="white" />
                     </svg>
                 </a>
-                <div  id="menu-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512" xml:space="preserve" width="24" height="24">
+                <!-- Asegúrate de que el botón esté definido en tu HTML -->
+                <button id="logoutButton" class="logged-in button-style"><a href="">LogOut</a></button>
+
+
+                <div id="menu-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512"
+                        xml:space="preserve" width="24" height="24">
                         <g fill="white">
-                            <path d="M480,224H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
-                            <path d="M32,138.667h448c17.673,0,32-14.327,32-32s-14.327-32-32-32H32c-17.673,0-32,14.327-32,32S14.327,138.667,32,138.667z" />
-                            <path d="M480,373.333H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,373.333,480,373.333z" />
+                            <path
+                                d="M480,224H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
+                            <path
+                                d="M32,138.667h448c17.673,0,32-14.327,32-32s-14.327-32-32-32H32c-17.673,0-32,14.327-32,32S14.327,138.667,32,138.667z" />
+                            <path
+                                d="M480,373.333H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,373.333,480,373.333z" />
                         </g>
                     </svg>
                 </div>
-                
+
             </div>
         </div>
         <div class="headerbot">
@@ -59,11 +82,11 @@
                 DEVOLUCIONES GRATUITAS.
             </p>
         </div>
-  
+
     </header>
-    
+
     <main>
-        
+
         <div class="video-container" data-auto-id="video-player">
             <video id="videoElement" loop="" muted="" playsinline="" autoplay="" fetchpriority="high">
                 <source src="../Video/arsenal.mp4" type="video/mp4">
@@ -71,7 +94,8 @@
             <div class="overlay">
                 <div class="banner">
                     <h1>PRIMERA EQUIPACIÓN<br>ARSENAL 24/25</h1>
-                    <a href="./camiseta.html?equipo=Arsenal&equipacion=Primera%20Equipación"><button id="buy-button-arsenal">COMPRAR ⭢</button></a>
+                    <a href="./camiseta.html?equipo=Arsenal&equipacion=Primera%20Equipación"><button
+                            id="buy-button-arsenal">COMPRAR ⭢</button></a>
                 </div>
             </div>
         </div>
@@ -83,151 +107,175 @@
                     <!-- Las tarjetas se generarán aquí mediante JavaScript -->
                 </div>
             </div>
-        
+
             <h2 id="h2_slider">Camisetas de la liga</h2>
             <section class="slider-container">
                 <div class="slider-images">
-                  <div class="slider-img">
-                    <img src="../Images/imgs/isco.png" alt="1" />
-                    <h1>Isco</h1>
-                    <a href="./camiseta.html?equipo=Betis&equipacion=Primera%20Equipación" class="details" >
-                      <h2>Real Betis</h2>
-                      <p>Primera Equipacion</p>
-                    </a>
-                  </div>
-                  <div class="slider-img">
-                    <img src="../Images/imgs/jude.png" alt="2" />
-                    <h1>Jude</h1>
-                     <a href="./camiseta.html?equipo=Madrid&equipacion=Primera%20Equipación" class="details" >
-                        <h2>Real Madrid</h2>
-                        <p>Primera Equipacion</p>
-                      </a>
-                  </div>
-                  <div class="slider-img">
-                    <img src="../Images/imgs/baena.png" alt="3" />
-                    <h1>Baena</h1>
-                    <a href="./camiseta.html?equipo=Villareal&equipacion=Primera%20Equipación" class="details" >
-                        <h2>Villareal</h2>
-                        <p>Primera Equipacion</p>
-                      </a>
-                  </div>
-                  <div class="slider-img active">
-                    <img src="../Images/imgs/lamine.png" alt="4" />
-                    <h1>Lamine</h1>
-                    <a href="./camiseta.html?equipo=Barcelona&equipacion=Primera%20Equipación" class="details" >
-                        <h2>Fc Barcelona</h2>
-                        <p>Primera Equipacion</p>
-                      </a>
-                  </div>
-                  <div class="slider-img">
-                    <img src="../Images/imgs/nico.png" alt="5" />
-                    <h1>Nico</h1>
-                    <a href="./camiseta.html?equipo=Bilbao&equipacion=Primera%20Equipación" class="details" >
-                        <h2>Athletic Club</h2>
-                        <p>Primera Equipacion</p>
-                      </a>
-                  </div>
-                  <div class="slider-img">
-                    <img src="../Images/imgs/griezmann.png" alt="6" />
-                    <h1>Grizzi</h1>
-                    <a href="./camiseta.html?equipo=AtleticoMadrid&equipacion=Primera%20Equipación" class="details" >
-                        <h2>Atletico Madrid</h2>
-                        <p>Primera Equipacion</p>
-                      </a>
-                  </div>
-                  <div class="slider-img">
-                    <img src="../Images/imgs/dovbyk.png" alt="7" />
-                    <h1>Dovbyk</h1>
-                    <a href="./camiseta.html?equipo=Girona&equipacion=Primera%20Equipación" class="details" >
-                        <h2>Girona</h2>
-                        <p>Primera Equipacion</p>
-                      </a>
-                  </div>
+                    <div class="slider-img">
+                        <img src="../Images/imgs/isco.png" alt="1" />
+                        <h1>Isco</h1>
+                        <a href="./camiseta.html?equipo=Betis&equipacion=Primera%20Equipación" class="details">
+                            <h2>Real Betis</h2>
+                            <p>Primera Equipacion</p>
+                        </a>
+                    </div>
+                    <div class="slider-img">
+                        <img src="../Images/imgs/jude.png" alt="2" />
+                        <h1>Jude</h1>
+                        <a href="./camiseta.html?equipo=Madrid&equipacion=Primera%20Equipación" class="details">
+                            <h2>Real Madrid</h2>
+                            <p>Primera Equipacion</p>
+                        </a>
+                    </div>
+                    <div class="slider-img">
+                        <img src="../Images/imgs/baena.png" alt="3" />
+                        <h1>Baena</h1>
+                        <a href="./camiseta.html?equipo=Villareal&equipacion=Primera%20Equipación" class="details">
+                            <h2>Villareal</h2>
+                            <p>Primera Equipacion</p>
+                        </a>
+                    </div>
+                    <div class="slider-img active">
+                        <img src="../Images/imgs/lamine.png" alt="4" />
+                        <h1>Lamine</h1>
+                        <a href="./camiseta.html?equipo=Barcelona&equipacion=Primera%20Equipación" class="details">
+                            <h2>Fc Barcelona</h2>
+                            <p>Primera Equipacion</p>
+                        </a>
+                    </div>
+                    <div class="slider-img">
+                        <img src="../Images/imgs/nico.png" alt="5" />
+                        <h1>Nico</h1>
+                        <a href="./camiseta.html?equipo=Bilbao&equipacion=Primera%20Equipación" class="details">
+                            <h2>Athletic Club</h2>
+                            <p>Primera Equipacion</p>
+                        </a>
+                    </div>
+                    <div class="slider-img">
+                        <img src="../Images/imgs/griezmann.png" alt="6" />
+                        <h1>Grizzi</h1>
+                        <a href="./camiseta.html?equipo=AtleticoMadrid&equipacion=Primera%20Equipación" class="details">
+                            <h2>Atletico Madrid</h2>
+                            <p>Primera Equipacion</p>
+                        </a>
+                    </div>
+                    <div class="slider-img">
+                        <img src="../Images/imgs/dovbyk.png" alt="7" />
+                        <h1>Dovbyk</h1>
+                        <a href="./camiseta.html?equipo=Girona&equipacion=Primera%20Equipación" class="details">
+                            <h2>Girona</h2>
+                            <p>Primera Equipacion</p>
+                        </a>
+                    </div>
                 </div>
-              </section>
-            
-            </div>
-            <div class="teams-container">
-                <h2>Camisetas de equipos de fútbol</h2>
-                <p>Las camisetas y equipaciones de los mejores equipos de fútbol del mundo. Descubre todos los productos oficiales para vestir como los jugadores.</p>
-                <div class="teams-grid">
-                    <div class="team-card">
-                        <img src="../Images/imgs/dybala.jpg" alt="Real Madrid">
-                        <div class="team-overlay">
-                            <span>ROMA</span>
-                        </div>
+            </section>
+
+        </div>
+        <div class="teams-container">
+            <h2>Camisetas de equipos de fútbol</h2>
+            <p>Las camisetas y equipaciones de los mejores equipos de fútbol del mundo. Descubre todos los productos
+                oficiales para vestir como los jugadores.</p>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <img src="../Images/imgs/dybala.jpg" alt="Real Madrid">
+                    <div class="team-overlay">
+                        <span>ROMA</span>
                     </div>
-                    <div class="team-card">
-                        <img src="../Images/imgs/son.jpg" alt="FC Barcelona">
-                        <div class="team-overlay">
-                            <span>TOTTENHAM</span>
-                        </div>
+                </div>
+                <div class="team-card">
+                    <img src="../Images/imgs/son.jpg" alt="FC Barcelona">
+                    <div class="team-overlay">
+                        <span>TOTTENHAM</span>
                     </div>
-                    <div class="team-card">
-                        <img src="../Images/imgs/mbappe.webp" alt="Atlético de Madrid">
-                        <div class="team-overlay">
-                            <span>PSG</span>
-                        </div>
+                </div>
+                <div class="team-card">
+                    <img src="../Images/imgs/mbappe.webp" alt="Atlético de Madrid">
+                    <div class="team-overlay">
+                        <span>PSG</span>
                     </div>
-                    <div class="team-card">
-                        <a href="./equipos.html">
+                </div>
+                <div class="team-card">
+                    <a href="./equipos.html">
                         <img src="../Images/imgs/musiala.jpg" alt="Más Equipos">
                         <div class="team-overlay">
                             <span>MÁS EQUIPOS</span>
-                        </a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-            <div class="container-main">
-        <h2 id="h2_slider">CAMISETAS MAS DESTACADAS</h2>
-        <div class="slider-cards">
-            <div class="cards" id="catalogo-destacados">
-                <!-- Las tarjetas se generarán aquí mediante JavaScript -->
-            </div>
         </div>
-           
-     
+        </div>
+        <div class="container-main">
+            <h2 id="h2_slider">CAMISETAS MAS DESTACADAS</h2>
+            <div class="slider-cards">
+                <div class="cards" id="catalogo-destacados">
+                    <!-- Las tarjetas se generarán aquí mediante JavaScript -->
+                </div>
+            </div>
+
+
 
             <section id="infoFutWear">
                 <h1>FutWear – Camisetas de Fútbol Auténticas</h1>
                 <p id="shortText">
-                    Bienvenido a FutWear, tu destino definitivo para camisetas de fútbol auténticas y de colección. Desde las canchas históricas hasta las modernas arenas, nuestras camisetas son testimonios de los triunfos y desafíos del fútbol mundial. <a href="javascript:void(0)" onclick="showMore()">Más información</a>
+                    Bienvenido a FutWear, tu destino definitivo para camisetas de fútbol auténticas y de colección.
+                    Desde las canchas históricas hasta las modernas arenas, nuestras camisetas son testimonios de los
+                    triunfos y desafíos del fútbol mundial. <a href="javascript:void(0)" onclick="showMore()">Más
+                        información</a>
                 </p>
                 <div id="moreText" style="display: none;">
                     <p>
-                        Desde su fundación en 2024, FutWear se ha esforzado por ofrecer a los aficionados al fútbol una experiencia única al proporcionar una vasta selección de camisetas, cada una con una historia significativa. Nuestro compromiso es brindar a los fanáticos no solo una prenda, sino un pedazo de la historia del fútbol.
+                        Desde su fundación en 2024, FutWear se ha esforzado por ofrecer a los aficionados al fútbol una
+                        experiencia única al proporcionar una vasta selección de camisetas, cada una con una historia
+                        significativa. Nuestro compromiso es brindar a los fanáticos no solo una prenda, sino un pedazo
+                        de la historia del fútbol.
                     </p>
                     <p>
-                        En FutWear, entendemos que cada camiseta de fútbol representa más que colores y logos; simboliza momentos de pasión, unidad y competencia que conectan a las personas independientemente de sus diferencias. Por esta razón, trabajamos codo a codo con proveedores confiables y sostenibles para garantizar que cada producto ofrecido no solo sea de la más alta calidad, sino también producido de manera ética.
+                        En FutWear, entendemos que cada camiseta de fútbol representa más que colores y logos; simboliza
+                        momentos de pasión, unidad y competencia que conectan a las personas independientemente de sus
+                        diferencias. Por esta razón, trabajamos codo a codo con proveedores confiables y sostenibles
+                        para garantizar que cada producto ofrecido no solo sea de la más alta calidad, sino también
+                        producido de manera ética.
                     </p>
                     <p>
-                        Nuestra colección abarca desde camisetas vintage que datan de las primeras copas del mundo hasta las modernas ediciones limitadas usadas en los torneos actuales. Cada artículo es seleccionado meticulosamente, garantizando autenticidad y calidad, reflejando nuestra devoción por el deporte y su rica historia.
+                        Nuestra colección abarca desde camisetas vintage que datan de las primeras copas del mundo hasta
+                        las modernas ediciones limitadas usadas en los torneos actuales. Cada artículo es seleccionado
+                        meticulosamente, garantizando autenticidad y calidad, reflejando nuestra devoción por el deporte
+                        y su rica historia.
                     </p>
                     <p>
-                        FutWear también está dedicado a la educación y la sostenibilidad en el deporte. Participamos activamente en programas que promueven el reciclaje de equipos deportivos y apoyamos iniciativas que buscan reducir el impacto ambiental de la industria del deporte. Creemos que es nuestra responsabilidad ayudar a preservar el planeta para las futuras generaciones de aficionados y atletas.
+                        FutWear también está dedicado a la educación y la sostenibilidad en el deporte. Participamos
+                        activamente en programas que promueven el reciclaje de equipos deportivos y apoyamos iniciativas
+                        que buscan reducir el impacto ambiental de la industria del deporte. Creemos que es nuestra
+                        responsabilidad ayudar a preservar el planeta para las futuras generaciones de aficionados y
+                        atletas.
                     </p>
                     <p>
-                        Además, ofrecemos un espacio en nuestro sitio web donde los fans pueden aprender sobre la historia detrás de las camisetas, los equipos y los jugadores que las han hecho famosas. A través de nuestro blog y nuestras redes sociales, compartimos historias inspiradoras de cómo el fútbol puede influir positivamente en las comunidades y fomentar un cambio social.
+                        Además, ofrecemos un espacio en nuestro sitio web donde los fans pueden aprender sobre la
+                        historia detrás de las camisetas, los equipos y los jugadores que las han hecho famosas. A
+                        través de nuestro blog y nuestras redes sociales, compartimos historias inspiradoras de cómo el
+                        fútbol puede influir positivamente en las comunidades y fomentar un cambio social.
                     </p>
                     <p>
-                        Únete a nosotros en esta emocionante travesía y descubre por qué en FutWear, creemos que cada camiseta tiene una historia que merece ser contada. Ya seas un coleccionista ávido o un nuevo aficionado al fútbol, en FutWear encontrarás camisetas que resonarán con tus emociones más profundas y te conectarán con los momentos más gloriosos del fútbol.
+                        Únete a nosotros en esta emocionante travesía y descubre por qué en FutWear, creemos que cada
+                        camiseta tiene una historia que merece ser contada. Ya seas un coleccionista ávido o un nuevo
+                        aficionado al fútbol, en FutWear encontrarás camisetas que resonarán con tus emociones más
+                        profundas y te conectarán con los momentos más gloriosos del fútbol.
                     </p>
                     <a href="javascript:void(0)" onclick="showLess()">Mostrar menos</a>
                 </div>
             </section>
-            
-            
-            
+
+
+
         </div>
     </main>
-    
-    <div include-html="./partials/footer.html"></div> 
-    <script src="../Javascript/include.js"></script>     
+
+    <div include-html="./partials/footer.html"></div>
+    <script src="../Javascript/include.js"></script>
     <script src="../Javascript/index.js"></script>
 
-  
-        
+
+
 </body>
 
 </html>
