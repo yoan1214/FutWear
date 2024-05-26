@@ -8,6 +8,8 @@ $(document).ready(function() {
         return;
     }
 
+    let camisetaData; // Define la variable fuera del scope de la solicitud AJAX
+
     $.ajax({
         url: '../Php/Views/getCamiseta.php',
         type: 'GET',
@@ -15,6 +17,8 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(data) {
             console.log(data); // Verifica los datos que llegan del servidor
+            camisetaData = data; // Asigna los datos a la variable global
+
             var detalle = $('#detalle');
             detalle.empty();
 
@@ -32,9 +36,52 @@ $(document).ready(function() {
                 detalle.append(nombreEquipo);
                 detalle.append(precioBox);
 
+                var tallaSelector = $('<select id="talla"></select>');
+                detalle.append(tallaSelector);
+
                 $.each(data, function(index, item) {
-                    var talla = $('<span class="talla"></span>').text(item.Talla);
-                    detalle.append(talla);
+                    var option = $('<option></option>').val(item.Talla).text(item.Talla);
+                    tallaSelector.append(option);
+                });
+
+                // Añadir botón para agregar al carrito
+                detalle.append('<button id="addToCart">Añadir al Carrito</button>');
+                
+                $('#addToCart').click(function() {
+                    const talla = $('#talla').val();
+                    if (!talla) {
+                        alert('Por favor, selecciona una talla.');
+                        return;
+                    }
+
+                    const usuarioId = sessionStorage.getItem("usuarioId");
+                    if (!usuarioId) {
+                        alert("Por favor, inicia sesión primero.");
+                        window.location.href = './login.html';
+                        return;
+                    }
+
+                    const cantidad = 1; // Asume una cantidad fija de 1 para el carrito
+                    const precioUnitario = parseFloat(data[0].Precio);
+
+                    $.ajax({
+                        url: '../Php/Carrito/addItemCarrito.php',
+                        type: 'POST',
+                        data: {
+                            usuarioId: usuarioId,
+                            camisetaId: data[0].CamisetaId, // Usa el ID correcto
+                            cantidad: cantidad,
+                            precioUnitario: precioUnitario,
+                            talla: talla
+                        },
+                        success: function(response) {
+                            alert(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error al añadir el item al carrito:', xhr.responseText);
+                            alert('Error al añadir el item al carrito');
+                        }
+                    });
                 });
 
             } else {

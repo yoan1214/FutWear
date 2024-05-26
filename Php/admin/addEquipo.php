@@ -1,31 +1,50 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $dsn = "mysql:dbname=futwear;host=127.0.0.1";
+    $nombreEquipo = $_POST['nombreEquipo'];
+    $fotoEquipo = $_FILES['fotoEquipo'];
+
+    $targetDir = "../../Images/Equipo/";
+    $relativeDir = "../Images/Equipo/";
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
+    $targetFile = $targetDir . basename($fotoEquipo["name"]);
+    $relativeFile = $relativeDir . basename($fotoEquipo["name"]);
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Verificar si el archivo es una imagen
+    $check = getimagesize($fotoEquipo["tmp_name"]);
+    if ($check === false) {
+        echo "El archivo no es una imagen.";
+        exit;
+    }
+
+    // Mover el archivo a la carpeta de destino
+    if (!move_uploaded_file($fotoEquipo["tmp_name"], $targetFile)) {
+        echo "Error al subir la imagen.";
+        exit;
+    }
+
+    $dsn = "mysql:host=localhost;dbname=futwear";
     $usuarioBD = "root";
-    $clave = ""; 
+    $clave = "";
 
     try {
-        $nombreEquipo = $_POST["nombre"];
-        $foto = $_FILES["foto"]["name"];
-        $temp_file = $_FILES["foto"]["tmp_name"];
-        $directorio_destino = "../Images/Equipo/";
-        move_uploaded_file($temp_file, $directorio_destino . $foto);
         $bd = new PDO($dsn, $usuarioBD, $clave);
+        $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "INSERT INTO Equipo (Nombre, Foto) VALUES (:nombreEquipo, :foto)";
+        $sql = "INSERT INTO Equipo (Nombre, Foto) VALUES (:nombreEquipo, :fotoEquipo)";
         $stmt = $bd->prepare($sql);
-
         $stmt->bindParam(':nombreEquipo', $nombreEquipo);
-        $stmt->bindParam(':foto', $foto);
-        
+        $stmt->bindParam(':fotoEquipo', $relativeFile);  // Guardar la ruta relativa
+
         if ($stmt->execute()) {
-            header("Location: ../html/index.html");
-            exit(); 
+            echo "Equipo añadido correctamente";
         } else {
-            echo "Error al insertar el equipo en la base de datos";
+            echo "Error al añadir el equipo.";
         }
     } catch (PDOException $e) {
-        echo "Falló la conexión: " . $e->getMessage();
+        echo "Error: " . $e->getMessage();
     }
 }
 ?>

@@ -3,10 +3,10 @@ $dsn = "mysql:dbname=futwear;host=127.0.0.1";
 $usuario = "root";
 $clave = "";
 try {
-     // Create the PDO connection
-     $pdo = new PDO($dsn, $usuario, $clave);
-     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     echo "Connected to the database 'futwear' successfully.<br>";
+    // Create the PDO connection
+    $pdo = new PDO($dsn, $usuario, $clave);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected to the database 'futwear' successfully.<br>";
     // array de equipos
     $equipos = array(
         "AcMilan" => "../Images/Equipo/AcMilan.png",
@@ -39,7 +39,7 @@ try {
         "Villareal" => "../Images/Equipo/Villareal.png",
         "ManCity" => "../Images/Equipo/ManCity.png"
     );
-    
+
     // array equipaciones
     $equipaciones = array(
         "AcMilan" => array(
@@ -260,8 +260,8 @@ try {
             ),
         )
     );
-    
-    
+
+
     // Insertar equipos
     foreach ($equipos as $nombre => $foto) {
         $sql = "INSERT INTO Equipo (Nombre, Foto) VALUES (?, ?) ON DUPLICATE KEY UPDATE Foto = VALUES(Foto)";
@@ -292,7 +292,6 @@ try {
             }
         }
     }
-
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

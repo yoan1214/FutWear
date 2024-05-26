@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos del Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pedidos de <span id="usuarioNombre"></span></h1>
+        <div id="pedidosContainer">
+            <!-- Aquí se mostrarán los pedidos del usuario -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="detallesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detalles del Pedido</h2>
+            <div id="detallesPedidoContainer">
+                <!-- Aquí se mostrarán los detalles del pedido -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const usuarioId = urlParams.get('usuarioId');
+
+            if (!usuarioId) {
+                alert("ID de usuario no proporcionado.");
+                window.location.href = './usuarios.html';
+                return;
+            }
+
+            function cargarUsuario() {
+                $.ajax({
+                    url: '../Php/admin/getUsuario.php',
+                    type: 'POST',
+                    data: { usuarioId: usuarioId },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            $('#usuarioNombre').text(`${response.data.Nombre} ${response.data.Apellidos}`);
+                        } else {
+                            alert('Error al cargar el nombre del usuario.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error: ', error);
+                        alert('Error al cargar el nombre del usuario.');
+                    }
+                });
+            }
+
+            function cargarPedidos() {
+                $.ajax({
+                    url: '../Php/admin/getPedidosUsuario.php',
+                    type: 'POST',
+                    data: { usuarioId: usuarioId },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            const pedidosContainer = $('#pedidosContainer');
+                            pedidosContainer.empty();
+                            let table = '<table><tr><th>ID</th><th>Fecha</th><th>Total</th><th>Estado</th><th>Acciones</th></tr>';
+                            response.data.forEach(pedido => {
+                                const fecha = new Date(pedido.Fecha).toLocaleString();
+                                table += `<tr>
+                                            <td>${pedido.Id}</td>
+                                            <td>${fecha}</td>
+                                            <td>€${pedido.Precio_Total}</td>
+                                            <td>${pedido.Estado}</td>
+                                            <td>
+                                                <button class="button" onclick="abrirModal(${pedido.Id})">Ver Detalles</button>
+                                            </td>
+                                          </tr>`;
+                            });
+                            table += '</table>';
+                            pedidosContainer.append(table);
+                        } else {
+                            alert('Error al cargar los pedidos.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error: ', error);
+                        alert('Error al cargar los pedidos.');
+                    }
+                });
+            }
+
+            cargarUsuario();
+            cargarPedidos();
+        });
+
+        function abrirModal(pedidoId) {
+            // Obtener detalles del pedido y mostrar en el modal
+            $.ajax({
+                url: '../Php/admin/getDetallesPedido.php',
+                type: 'POST',
+                data: { pedidoId: pedidoId },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        const detallesContainer = $('#detallesPedidoContainer');
+                        detallesContainer.empty();
+                        response.data.forEach(detalle => {
+                            detallesContainer.append(`
+                                <div>
+                                    <img src="${detalle.Foto}" alt="${detalle.Nombre_Equipacion}" style="max-width: 100px;">
+                                    <p>Equipo: ${detalle.Nombre_Equipo}</p>
+                                    <p>Equipación: ${detalle.Nombre_Equipacion}</p>
+                                    <p>Talla: ${detalle.Talla}</p>
+                                    <p>Cantidad: ${detalle.Cantidad}</p>
+                                    <p>Precio Unitario: €${detalle.Precio_Unitario}</p>
+                                    <p>Total: €${detalle.Cantidad * detalle.Precio_Unitario}</p>
+                                </div>
+                            `);
+                        });
+
+                        const modal = $('#detallesModal');
+                        modal.show();
+                    } else {
+                        alert('Error al cargar los detalles del pedido.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error: ', error);
+                    alert('Error al cargar los detalles del pedido.');
+                }
+            });
+        }
+
+        function cerrarModal() {
+            $('#detallesModal').hide();
+        }
+
+        // Cerrar modal al hacer clic en "x"
+        $('.close').click(function() {
+            cerrarModal();
+        });
+
+        // Cerrar modal al hacer clic fuera de él
+        $(window).click(function(event) {
+            if (event.target == document.getElementById('detallesModal')) {
+                cerrarModal();
+            }
+        });
+    </script>
+</body>
+</html>

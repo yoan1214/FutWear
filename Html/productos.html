@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <link rel="stylesheet" href="../Css/productos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Productos</h1>
+        <div class="button-container">
+            <button class="button" onclick="mostrarModal('añadirEquipo')">Añadir Equipo</button>
+            <button class="button" onclick="mostrarModal('añadirEquipacion')">Añadir Equipación</button>
+            <button class="button" onclick="mostrarModal('añadirCamiseta')">Añadir Camiseta</button>
+        </div>
+        <div id="productosContainer">
+            <!-- Aquí se mostrarán los productos -->
+        </div>
+    </div>
+
+    <!-- Modales -->
+    <div id="añadirEquipo" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('añadirEquipo')">&times;</span>
+            <h2>Añadir Equipo</h2>
+            <form id="formAñadirEquipo">
+                <label for="nombreEquipo">Nombre del Equipo:</label>
+                <input type="text" id="nombreEquipo" name="nombreEquipo" required><br>
+                <label for="fotoEquipo">Foto del Equipo:</label>
+                <input type="file" id="fotoEquipo" name="fotoEquipo" required><br>
+                <button type="submit">Añadir Equipo</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="añadirEquipacion" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('añadirEquipacion')">&times;</span>
+            <h2>Añadir Equipación</h2>
+            <form id="formAñadirEquipacion">
+                <label for="equipoId">Equipo:</label>
+                <select id="equipoId" name="equipoId" required></select><br>
+                <label for="nombreEquipacion">Nombre de la Equipación:</label>
+                <input type="text" id="nombreEquipacion" name="nombreEquipacion" required><br>
+                <label for="precioEquipacion">Precio de la Equipación:</label>
+                <input type="number" step="0.01" id="precioEquipacion" name="precioEquipacion" required><br>
+                <label for="fotoEquipacion">Foto de la Equipación:</label>
+                <input type="file" id="fotoEquipacion" name="fotoEquipacion" required><br>
+                <button type="submit">Añadir Equipación</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="añadirCamiseta" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('añadirCamiseta')">&times;</span>
+            <h2>Añadir Camiseta</h2>
+            <form id="formAñadirCamiseta">
+                <label for="equipoIdCamiseta">Equipo:</label>
+                <select id="equipoIdCamiseta" name="equipoId" required></select><br>
+                <label for="equipacionId">Equipación:</label>
+                <select id="equipacionId" name="equipacionId" required></select><br>
+                <label for="tallaCamiseta">Talla:</label>
+                <input type="text" id="tallaCamiseta" name="tallaCamiseta" required><br>
+                <label for="stockCamiseta">Stock:</label>
+                <input type="number" id="stockCamiseta" name="stockCamiseta" required><br>
+                <button type="submit">Añadir Camiseta</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Javascript/productos.js"></script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.querySelector(".formulario");
 
@@ -16,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
             dataType: "json", // Especifica que esperas una respuesta en formato JSON
             success: function(response) {
                 if (response.status === "success") {
-                    // Almacenar correo y estado de admin en sessionStorage
+                    // Almacenar correo, usuarioId y estado de admin en sessionStorage
                     sessionStorage.setItem("userEmail", response.email);
+                    sessionStorage.setItem("usuarioId", response.usuarioId);
                     sessionStorage.setItem("isAdmin", response.isAdmin);
 
                     if (response.isAdmin === "1") {
@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-   
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     const isAdmin = sessionStorage.getItem("isAdmin");
     const userEmail = sessionStorage.getItem("userEmail");

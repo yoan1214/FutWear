@@ -12,7 +12,7 @@ try {
     $equipo = $_GET['equipo'];
     $equipacion = $_GET['equipacion'];
 
-    $sql = "SELECT e.Nombre AS Equipo, eq.Nombre AS Equipacion, eq.Foto, eq.Precio, c.Talla, c.Stock 
+    $sql = "SELECT c.Id AS CamisetaId, e.Nombre AS Equipo, eq.Nombre AS Equipacion, eq.Foto, eq.Precio, c.Talla, c.Stock 
             FROM Equipacion eq
             JOIN Equipo e ON eq.Equipo_Id = e.Id
             JOIN Camiseta c ON c.Equipacion_Id = eq.Id

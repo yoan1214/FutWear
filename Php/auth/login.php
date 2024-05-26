@@ -5,27 +5,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $dsn = "mysql:dbname=futwear;host=127.0.0.1";
     $usuarioBD = "root";
-    $clave = ""; 
+    $clave = "";
 
     try {
         $bd = new PDO($dsn, $usuarioBD, $clave);
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Obtener la contraseña hasheada y el estado de administrador basado en el correo.
-        $sql = "SELECT Contraseña, Admin FROM usuarios WHERE Correo = :correo";
+        $sql = "SELECT Id, Contraseña, Admin FROM Usuarios WHERE Correo = :correo LIMIT 1";
         $stmt = $bd->prepare($sql);
         $stmt->bindParam(':correo', $correo);
         $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($passw, $user['Contraseña'])) {
-            $isAdmin = $user['Admin'] ? "1" : "0";  // Convertir booleano a cadena para simplificar el manejo en JS
-            echo json_encode(["status" => "success", "isAdmin" => $isAdmin, "email" => $correo]);
+        if ($usuario && password_verify($passw, $usuario['Contraseña'])) {
+            echo json_encode([
+                "status" => "success",
+                "usuarioId" => $usuario['Id'],
+                "isAdmin" => $usuario['Admin'] ? "1" : "0",
+                "email" => $correo
+            ]);
         } else {
             echo json_encode(["status" => "error", "message" => "Error de autenticación"]);
         }
+        $bd = null;
     } catch (PDOException $e) {
-        echo json_encode(["status" => "error", "message" => "Falló la conexión: " . $e->getMessage()]);
+        echo json_encode(["status" => "error", "message" => $e->getMessage()]);
     }
 }
 ?>

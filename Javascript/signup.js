@@ -18,16 +18,18 @@ document.addEventListener("DOMContentLoaded", function() {
             url: "../Php/auth/signup.php", // Asegúrate de poner aquí la URL correcta de tu script PHP
             type: "POST",
             data: formData,
+            dataType: "json",
             success: function(response) {
-                if (response === "Usuario registrado correctamente") {
+                if (response.status === "success") {
                     // Almacenar correo y estado de admin en sessionStorage
-                    sessionStorage.setItem("userEmail", formData.correo);
-                  
+                    sessionStorage.setItem("userEmail", response.email);
+                    sessionStorage.setItem("usuarioId", response.usuarioId);
+                    sessionStorage.setItem("isAdmin", "0"); // Todos los nuevos usuarios no son admins
 
                     alert("Registro exitoso. Bienvenido!");
                     window.location.href = './index.html'; // Redirigir a la página principal o de usuario
                 } else {
-                    alert(response); // Muestra el mensaje de respuesta del servidor
+                    alert(response.message); // Muestra el mensaje de respuesta del servidor
                 }
             },
             error: function(xhr, status, error) {
@@ -52,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         return true;
     }
-   
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     const isAdmin = sessionStorage.getItem("isAdmin");
     const userEmail = sessionStorage.getItem("userEmail");

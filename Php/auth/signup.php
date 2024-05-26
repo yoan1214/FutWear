@@ -16,38 +16,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $metodo_pago = $_POST["metodo_pago"];
 
     try {
-
         $bd = new PDO($dsn, $usuarioBD, $clave);
-
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         $sql = "INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Sexo, Teléfono, Dirección, Código_Postal, Provincia, Método_de_Pago, Admin) 
-        VALUES (:nombre, :apellidos, :correo, :passw, :sexo, :telefono, :direccion, :codigo_postal, :provincia, :metodo_pago, false)";
+                VALUES (:nombre, :apellidos, :correo, :passw, :sexo, :telefono, :direccion, :codigo_postal, :provincia, :metodo_pago, false)";
+        
+        $stmt = $bd->prepare($sql);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellidos', $apellidos);
+        $stmt->bindParam(':correo', $correo);
+        $stmt->bindParam(':passw', $passw);
+        $stmt->bindParam(':sexo', $sexo);
+        $stmt->bindParam(':telefono', $telefono);
+        $stmt->bindParam(':direccion', $direccion);
+        $stmt->bindParam(':codigo_postal', $codigo_postal);
+        $stmt->bindParam(':provincia', $provincia);
+        $stmt->bindParam(':metodo_pago', $metodo_pago);
 
-$stmt = $bd->prepare($sql);
-$stmt->bindParam(':nombre', $nombre);
-$stmt->bindParam(':apellidos', $apellidos);
-$stmt->bindParam(':correo', $correo);
-$stmt->bindParam(':passw', $passw);
-$stmt->bindParam(':sexo', $sexo);
-$stmt->bindParam(':telefono', $telefono);
-$stmt->bindParam(':direccion', $direccion);
-$stmt->bindParam(':codigo_postal', $codigo_postal);
-$stmt->bindParam(':provincia', $provincia);
-$stmt->bindParam(':metodo_pago', $metodo_pago);
-
-
-if ($stmt->execute()) {
-    echo "Usuario registrado correctamente";  // Esta respuesta se maneja en el JS
-} else {
-    echo "El usuario no se ha registrado";  // Cualquier fallo devuelve esta respuesta
-}
-
+        if ($stmt->execute()) {
+            $usuarioId = $bd->lastInsertId();
+            echo json_encode([
+                "status" => "success",
+                "message" => "Usuario registrado correctamente",
+                "usuarioId" => $usuarioId
+            ]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "El usuario no se ha registrado"]);
+        }
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) { // Código de error para duplicados
-            echo "El correo electrónico ya está registrado.";
+            echo json_encode(["status" => "error", "message" => "El correo electrónico ya está registrado."]);
         } else {
-            echo "Error en la base de datos: " . $e->getMessage();
+            echo json_encode(["status" => "error", "message" => "Error en la base de datos: " . $e->getMessage()]);
         }
-}
+    }
 }
 ?>

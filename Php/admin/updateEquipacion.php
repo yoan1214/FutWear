@@ -1,9 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $equipoId = $_POST["equipoId"];
     $equipacionId = $_POST["equipacionId"];
-    $talla = $_POST["tallaCamiseta"];
-    $stock = $_POST["stockCamiseta"];
+    $nuevoPrecio = $_POST["nuevoPrecio"];
 
     $dsn = "mysql:host=localhost;dbname=futwear";
     $usuarioBD = "root";
@@ -13,17 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bd = new PDO($dsn, $usuarioBD, $clave);
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "INSERT INTO Camiseta (Equipo_Id, Equipacion_Id, Talla, Stock) VALUES (:equipoId, :equipacionId, :talla, :stock)";
+        $sql = "UPDATE Equipacion SET Precio = :nuevoPrecio WHERE Id = :equipacionId";
         $stmt = $bd->prepare($sql);
-        $stmt->bindParam(':equipoId', $equipoId);
+        $stmt->bindParam(':nuevoPrecio', $nuevoPrecio);
         $stmt->bindParam(':equipacionId', $equipacionId);
-        $stmt->bindParam(':talla', $talla);
-        $stmt->bindParam(':stock', $stock);
 
         if ($stmt->execute()) {
-            echo "Camiseta añadida correctamente";
+            echo "Equipación actualizada correctamente";
         } else {
-            echo "Error al añadir la camiseta";
+            echo "Error al actualizar la equipación";
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();

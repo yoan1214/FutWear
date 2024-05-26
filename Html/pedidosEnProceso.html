@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos en Proceso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pedidos en Proceso</h1>
+        <div id="pedidosContainer">
+            <!-- Aquí se mostrarán los pedidos en proceso -->
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function cargarPedidos() {
+                $.ajax({
+                    url: '../Php/admin/getPedidosEnProceso.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            const pedidosContainer = $('#pedidosContainer');
+                            pedidosContainer.empty();
+                            let table = '<table><tr><th>ID</th><th>Usuario ID</th><th>Fecha</th><th>Total</th><th>Acciones</th></tr>';
+                            response.data.forEach(pedido => {
+                                const fecha = new Date(pedido.Fecha).toLocaleString();
+                                table += `<tr>
+                                            <td>${pedido.Id}</td>
+                                            <td>${pedido.Id_Usuario}</td>
+                                            <td>${fecha}</td>
+                                            <td>€${pedido.Precio_Total}</td>
+                                            <td>
+                                                <button class="button" onclick="completarPedido(${pedido.Id})">Completar</button>
+                                            </td>
+                                          </tr>`;
+                            });
+                            table += '</table>';
+                            pedidosContainer.append(table);
+                        } else {
+                            alert('Error al cargar los pedidos.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error: ', error);
+                        alert('Error al cargar los pedidos.');
+                    }
+                });
+            }
+
+            cargarPedidos();
+        });
+
+        function completarPedido(pedidoId) {
+            if (confirm('¿Estás seguro de completar este pedido?')) {
+                $.ajax({
+                    url: '../Php/admin/completarPedido.php',
+                    type: 'POST',
+                    data: { pedidoId: pedidoId },
+                    success: function(response) {
+                        if (response === 'Pedido completado correctamente') {
+                            alert('Pedido completado correctamente');
+                            location.reload();
+                        } else {
+                            alert(response);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error: ', error);
+                        alert('Error al completar el pedido.');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

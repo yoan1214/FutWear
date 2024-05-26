@@ -1,74 +1,55 @@
-
-Para calcular correctamente el precio unitario y el total en el carrito cuando se añaden varias camisetas, es importante tener una estrategia clara en la gestión de la base de datos y el código de backend. La estructura de tu base de datos ya establece un buen fundamento para manejar esto. Aquí te explico cómo deberías proceder:
-
-Precio Unitario
-El precio unitario de cada camiseta debe venir directamente de la tabla Equipacion, como ya establecimos en tu código. Cada vez que se añade una camiseta al carrito, recuperas el precio de su equipación correspondiente.
-
-Precio Total de la Camiseta en el Carrito
-El precio total de cada línea (cada camiseta específica en el carrito) se calcula simplemente multiplicando el precio unitario por la cantidad de esa camiseta que se quiere comprar. Este cálculo se hace en el momento de insertar o actualizar una entrada en el carrito.
-
-Cálculo del Precio Total del Carrito
-El precio total del carrito, que es la suma de todos los productos que tiene el usuario en su carrito, se calcula sumando todos los precios totales de las líneas del carrito que pertenecen a un usuario específico.
-
-Ejemplo de Código PHP para Añadir al Carrito
-Aquí te dejo un ejemplo de cómo podrías modificar tu lógica para añadir una camiseta al carrito, asegurándote de calcular correctamente tanto el precio unitario como el total:
-
-php
-Copiar código
-<?php
-$dsn = "mysql:dbname=futwear;host=localhost";
-$usuario = "root";
-$clave = "";
-
-try {
-    $pdo = new PDO($dsn, $usuario, $clave);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $idCamiseta = $_POST['idCamiseta'];
-    $cantidad = $_POST['cantidad'];
-    $idUsuario = $_POST['idUsuario'];
-
-    // Obtener el precio de la equipación asociada a la camiseta
-    $sql = "SELECT Equipacion.Precio
-            FROM Camiseta
-            JOIN Equipacion ON Camiseta.Equipacion_Id = Equipacion.Id
-            WHERE Camiseta.Id = :idCamiseta";
-    
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':idCamiseta', $idCamiseta, PDO::PARAM_INT);
-    $stmt->execute();
-    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-    $precioUnitario = $resultado['Precio'];
-    $precioTotal = $precioUnitario * $cantidad;
-
-    // Insertar o actualizar la camiseta en el carrito
-    $sqlInsertCarrito = "INSERT INTO Carrito (Id_Usuario, Id_Camiseta, Cantidad, Precio_Unitario, Precio_Total)
-                         VALUES (:idUsuario, :idCamiseta, :cantidad, :precioUnitario, :precioTotal)
-                         ON DUPLICATE KEY UPDATE
-                         Cantidad = Cantidad + :cantidad, Precio_Total = Cantidad * Precio_Unitario";
-
-    $stmtInsert = $pdo->prepare($sqlInsertCarrito);
-    $stmtInsert->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
-    $stmtInsert->bindParam(':idCamiseta', $idCamiseta, PDO::PARAM_INT);
-    $stmtInsert->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-    $stmtInsert->bindParam(':precioUnitario', $precioUnitario);
-    $stmtInsert->bindParam(':precioTotal', $precioTotal);
-    $stmtInsert->execute();
-
-    echo "Camiseta añadida al carrito correctamente.";
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>
-Nota sobre "ON DUPLICATE KEY UPDATE"
-Esta parte del SQL asume que tienes un mecanismo para manejar claves duplicadas, típicamente configurando las columnas Id_Usuario y Id_Camiseta como una clave compuesta única. Si no es el caso, tendrás que ajustar la lógica para verificar si el producto ya existe en el carrito y actualizarlo adecuadamente.
-
-Conclusión
-Este enfoque te permite gestionar dinámicamente los precios en el carrito, asegurando que cualquier cambio en los precios de las equipaciones se refleje automáticamente en los nuevos ingresos al carrito y manteniendo la consistencia en los cálculos cuando se modifican las cantidades de los productos ya existentes en el carrito.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito de Compras</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #carrito {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .carrito-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .carrito-item img {
+            max-width: 100px;
+        }
+        .cantidad-input {
+            width: 50px;
+        }
+        #checkoutButton, #completeOrderButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #completeOrderButton {
+            background-color: #FF5733;
+        }
+    </style>
+</head>
+<body>
+    <div id="carrito">
+        <h2>Carrito de Compras</h2>
+        <div id="carritoItems">
+            <!-- Aquí se mostrarán los items del carrito -->
+        </div>
+        <button id="checkoutButton">Finalizar Compra</button>
+       
+    </div>
 
 
-
-
-
-
-
+    <script src="../Javascript/carrito.js"></script>
+</body>
+</html>

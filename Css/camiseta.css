@@ -176,3 +176,32 @@ header {
     padding: 10px;
     display: inline-block;
 }
+.detalle {
+  text-align: center;
+}
+.precio-box {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+.talla-selector {
+  margin: 10px 0;
+}
+.talla {
+  cursor: pointer;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+.talla.selected {
+  background-color: #000;
+  color: #fff;
+}
+#addToCart {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
