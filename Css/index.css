@@ -33,21 +33,10 @@ main {
 
 header {
   width: 100%;
-  min-height: 140px;
+  min-height: 100px;
   margin-bottom: 30px;
 }
 
-.headerbot {
-  background-color: #d3b587;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 14px;
-  width: 100%;
-  position: relative;
-  top:129px; /* Ajusta este valor si es necesario */
-  z-index: 999;
-}
 
 .headermain {
   position: fixed;

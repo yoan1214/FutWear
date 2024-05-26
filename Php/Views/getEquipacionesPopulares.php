@@ -9,8 +9,14 @@ try {
     // Establecer el modo de error de PDO a excepción
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Seleccionar 10 equipaciones aleatorias
-    $sql = "SELECT * FROM Equipacion ORDER BY RAND() LIMIT 12";
+    // Seleccionar equipaciones cuya suma de stocks de todas las camisetas asociadas sea menor a 25
+    $sql = "
+        SELECT e.*, SUM(c.Stock) AS total_stock
+        FROM Equipacion e
+        LEFT JOIN Camiseta c ON e.Id = c.Equipacion_Id
+        GROUP BY e.Id
+        HAVING total_stock < 25
+    ";
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
 

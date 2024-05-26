@@ -1,236 +1,132 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Administración de Usuarios</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .form-container {
-            margin: 20px 0;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="../Css/usuario.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 </head>
 <body>
-    <div class="container">
-        <h1>Administración de Usuarios</h1>
-        <div id="usuariosList">
-            <!-- Aquí se listarán los usuarios -->
+    <header>
+
+        <div class="headermain">
+            <a href="./index.html" class="logo"><img src="../Images/imgs/Futwear-logo.png" alt="logo" id="logo-header" /></a>
+            <!-- navbar -->
+            <ul class="navbar">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./catalogo.html">Catalogo</a></li>
+                <li><a href="./equipos.html">Equipos</a></li>
+                <li><a href="./novedades.html">Novedades</a></li>
+                <li><a href="./masPopulares.html">Más Vendido</a></li>
+            </ul>
+            <div class="headerdetails">
+
+                <a href="./usuario.html" class="logged-in" >
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"
+                        width="24" height="24">
+                        <path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z"
+                            fill="white" />
+                        <circle cx="12" cy="6" r="6" fill="white" />
+                    </svg>
+                </a>
+                <button id="loginButton" class="no-logged-in button-style"><a href="./login.html">LogIn</a></button>
+                <button id="signupButton" class="no-logged-in button-style"><a href="./signup.html">SignUp</a></button>
+                
+                <a href="./panelAdmin.html" class="admin-only">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"
+                        width="24" height="24">
+                        <path fill="white"
+                            d="m8,12c-3.309,0-6-2.691-6-6S4.691,0,8,0s6,2.691,6,6-2.691,6-6,6Zm14.5,6c0-.46-.089-.895-.218-1.313l1.416-.816-.998-1.733-1.411.813c-.605-.652-1.393-1.125-2.289-1.33v-1.621h-2v1.621c-.896.205-1.685.678-2.289,1.33l-1.411-.813-.998,1.733,1.416.816c-.129.418-.218.853-.218,1.313s.089.895.218,1.313l-1.416.816.998,1.733,1.411-.813c.605.652,1.393,1.125,2.289,1.33v1.621h2v-1.621c.896-.205,1.685-.678,2.289-1.33l1.411.813.998-1.733-1.416-.816c.129-.418.218-.853.218-1.313Zm-4.5,1.5c-.827,0-1.5-.673-1.5-1.5s.673-1.5,1.5-1.5,1.5.673,1.5,1.5-.673,1.5-1.5,1.5Zm-8-1.5c0-1.459.397-2.822,1.079-4h-6.579c-2.481,0-4.5,2.019-4.5,4.5v5.5h12.721c-1.665-1.466-2.721-3.607-2.721-6Z" />
+                    </svg>
+                </a>
+                <a href="./carrito.html" class="carrito logged-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
+                        <path
+                            d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077Z"
+                            fill="white" />
+                        <circle cx="7" cy="22" r="2" fill="white" />
+                        <circle cx="17" cy="22" r="2" fill="white" />
+                    </svg>
+                </a>
+                <!-- Asegúrate de que el botón esté definido en tu HTML -->
+                <button id="logoutButton" class="logged-in button-style"><a href="">LogOut</a></button>
+
+
+                <div id="menu-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512"
+                        xml:space="preserve" width="24" height="24">
+                        <g fill="white">
+                            <path
+                                d="M480,224H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
+                            <path
+                                d="M32,138.667h448c17.673,0,32-14.327,32-32s-14.327-32-32-32H32c-17.673,0-32,14.327-32,32S14.327,138.667,32,138.667z" />
+                            <path
+                                d="M480,373.333H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,373.333,480,373.333z" />
+                        </g>
+                    </svg>
+                </div>
+
+            </div>
         </div>
-    </div>
+        <!-- <div class="headerbot">
+            <p>
+                ENVÍOS GRATUITOS PARA PEDIDOS SUPERIORES A 120 €. 60 DÍAS DE
+                DEVOLUCIONES GRATUITAS.
+            </p>
+        </div> -->
 
-    <!-- Modal para editar usuario -->
-    <div id="editUserModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Editar Usuario</h2>
-            <form id="editUserForm">
-                <input type="hidden" id="editId" name="id">
-                <input type="text" id="editNombre" name="nombre" placeholder="Nombre" required>
-                <input type="text" id="editApellidos" name="apellidos" placeholder="Apellidos" required>
-                <input type="email" id="editCorreo" name="correo" placeholder="Correo Electrónico" required>
-                <input type="password" id="editPassword" name="password" placeholder="Nueva Contraseña (dejar en blanco para mantener)">
-                <select id="editSexo" name="sexo" required>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                </select>
-                <input type="tel" id="editTelefono" name="telefono" placeholder="Teléfono" required>
-                <input type="text" id="editDireccion" name="direccion" placeholder="Dirección" required>
-                <input type="text" id="editCodigoPostal" name="codigo_postal" placeholder="Código Postal" required>
-                <input type="text" id="editProvincia" name="provincia" placeholder="Provincia" required>
-                <input type="text" id="editMetodoPago" name="metodo_pago" placeholder="Método de Pago" required>
-                <label for="editAdmin">Admin</label>
-                <input type="checkbox" id="editAdmin" name="admin">
-                <button type="submit">Guardar Cambios</button>
-            </form>
+    </header>
+<main>
+    <div class="user-panel">
+        <h1>Bienvenido a tu panel de usuario <span id="displayNombre"></span> </h1>
+        <h2>Tus datos actuales <button><a href="./pedidos.html">Tus Pedidos</a></button></h2>
+        <div id="userDataDisplay">
+            <p><strong>Nombre:</strong> <span id="displayNombre"></span></p>
+            <p><strong>Apellidos:</strong> <span id="displayApellidos"></span></p>
+            <p><strong>Correo Electrónico:</strong> <span id="displayCorreo"></span></p>
+            <p><strong>Teléfono:</strong> <span id="displayTelefono"></span></p>
+            <p><strong>Dirección:</strong> <span id="displayDireccion"></span></p>
+            <p><strong>Código Postal:</strong> <span id="displayCodigoPostal"></span></p>
+            <p><strong>Provincia:</strong> <span id="displayProvincia"></span></p>
+            <p><strong>Método de Pago:</strong> <span id="displayMetodoPago"></span></p>
         </div>
+    
+        <h2>Actualizar tus datos</h2>
+        <form id="userForm">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono">
+    
+            <label for="password">Nueva Contraseña (dejar en blanco para mantener la actual):</label>
+            <input type="password" id="password" name="password">
+    
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+    
+            <label for="codigo_postal">Código Postal:</label>
+            <input type="text" id="codigo_postal" name="codigo_postal">
+    
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" name="provincia">
+    
+            <label for="metodo_pago">Método de Pago:</label>
+            <select id="metodo_pago" name="metodo_pago">
+                <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                <option value="Transferencia bancaria">Transferencia bancaria</option>
+                <option value="PayPal">PayPal</option>
+            </select>
+    
+            <button type="button" id="updateButton">Actualizar Datos</button>
+        </form>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById("editUserModal");
-            const span = document.getElementsByClassName("close")[0];
-
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            function cargarUsuarios() {
-                $.ajax({
-                    url: '../../Php/admin/getUsuarios.php',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            const usuariosList = $('#usuariosList');
-                            usuariosList.empty();
-                            let table = '<table><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Correo</th><th>Teléfono</th><th>Acciones</th></tr>';
-                            response.data.forEach(usuario => {
-                                table += `<tr>
-                                            <td>${usuario.Id}</td>
-                                            <td>${usuario.Nombre}</td>
-                                            <td>${usuario.Apellidos}</td>
-                                            <td>${usuario.Correo}</td>
-                                            <td>${usuario.Teléfono}</td>
-                                            <td>
-                                                <button onclick="editarUsuario(${usuario.Id})">Editar</button>
-                                                <button onclick="eliminarUsuario(${usuario.Id})">Eliminar</button>
-                                                <button onclick="verPedidos(${usuario.Id})">Ver Pedidos</button>
-                                            </td>
-                                          </tr>`;
-                            });
-                            table += '</table>';
-                            usuariosList.append(table);
-                        } else {
-                            alert('Error al cargar los usuarios.');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error: ', error);
-                        alert('Error al cargar los usuarios.');
-                    }
-                });
-            }
-
-            function editarUsuario(id) {
-                $.ajax({
-                    url: '../../Php/admin/getUsuario.php',
-                    type: 'POST',
-                    data: { id: id },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            const usuario = response.data;
-                            $('#editId').val(usuario.Id);
-                            $('#editNombre').val(usuario.Nombre);
-                            $('#editApellidos').val(usuario.Apellidos);
-                            $('#editCorreo').val(usuario.Correo);
-                            $('#editSexo').val(usuario.Sexo);
-                            $('#editTelefono').val(usuario.Teléfono);
-                            $('#editDireccion').val(usuario.Dirección);
-                            $('#editCodigoPostal').val(usuario.Código_Postal);
-                            $('#editProvincia').val(usuario.Provincia);
-                            $('#editMetodoPago').val(usuario.Método_de_Pago);
-                            $('#editAdmin').prop('checked', usuario.Admin == 1);
-                            modal.style.display = "block";
-                        } else {
-                            alert('Error al obtener los detalles del usuario.');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error: ', error);
-                        alert('Error al obtener los detalles del usuario.');
-                    }
-                });
-            }
-
-            $('#editUserForm').on('submit', function(event) {
-                event.preventDefault();
-                const formData = $(this).serialize();
-                $.ajax({
-                    url: '../../Php/admin/updateUsuario.php',
-                    type: 'POST',
-                    data: formData,
-                    success: function(response) {
-                        if (response === 'Usuario actualizado correctamente') {
-                            alert('Usuario actualizado correctamente');
-                            modal.style.display = "none";
-                            cargarUsuarios();
-                        } else {
-                            alert(response);
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error: ', error);
-                        alert('Error al actualizar el usuario.');
-                    }
-                });
-            });
-
-            function eliminarUsuario(id) {
-                if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-                    $.ajax({
-                        url: '../../Php/admin/deleteUsuario.php',
-                        type: 'POST',
-                        data: { id: id },
-                        success: function(response) {
-                            if (response === 'Usuario eliminado correctamente') {
-                                alert('Usuario eliminado correctamente');
-                                cargarUsuarios();
-                            } else {
-                                alert(response);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error: ', error);
-                            alert('Error al eliminar el usuario.');
-                        }
-                    });
-                }
-            }
-
-            function verPedidos(id) {
-                window.location.href = `./pedidosUsuario.html?usuarioId=${id}`;
-            }
-
-            cargarUsuarios();
-        });
-    </script>
+    
+    
+</main>
+<div include-html="./footer.html"></div> 
+<script src="../Javascript/include.js"></script> 
+<script src="../Javascript/usuario.js"></script>
 </body>
+
 </html>

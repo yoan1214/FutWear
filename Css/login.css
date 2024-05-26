@@ -33,21 +33,10 @@ main {
 
 header {
   width: 100%;
-  min-height: 140px;
+  min-height: 100px;
   margin-bottom: 30px;
 }
 
-.headerbot {
-  background-color: #d3b587;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 14px;
-  width: 100%;
-  position: relative;
-  top:129px; /* Ajusta este valor si es necesario */
-  z-index: 999;
-}
 
 .headermain {
   position: fixed;
@@ -113,7 +102,6 @@ header {
   padding: 10px 20px; /* Padding generoso para mejorar la clickeabilidad */
   margin-right: 10px; /* Espacio entre los botones */
   border-radius: 5px; /* Bordes redondeados para un look moderno */
-  
 }
 
 .button-style a {
@@ -127,6 +115,7 @@ header {
   background-color: #d3b587; /* Cambio de color en hover para integrar con el esquema del sitio */
   color: black; /* Cambio de color de texto en hover */
 }
+
 
 
 @media (max-width: 960px) {
@@ -153,6 +142,21 @@ header {
       margin: 12px 0;
       padding: 0px 25px;
   }
+  .banner  {
+    font-size: 0.5em;
+  }
+
+  #buy-button-arsenal {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+
+  .overlay {
+    width: 50%;
+    height: 20%;
+    
+  }
+
 }
 
 .centrar {

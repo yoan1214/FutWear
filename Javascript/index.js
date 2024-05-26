@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: "../Php/Views/getDestacados.php",
+        url: "../Php/Views/getAlternativas.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
@@ -41,39 +41,6 @@ $(document).ready(function () {
         },
     });
 });
-// equipos
-// $(document).ready(function() {
-//     $.ajax({
-//         url: '../Php/Views/getEquipoIndex.php',
-//         type: 'GET',
-//         dataType: 'json',
-//         success: function(data) {
-//             var catalogo = $('#dynamic-teams');
-//             $.each(data, function(index, equipo) {
-//                 // Crear las tarjetas dinámicamente con los datos recibidos
-//                 var teamCard = $('<div class="team-card"></div>').attr('data-equipo', equipo.Nombre);
-//                 var img = $('<img>').attr('src', equipo.Foto).attr('alt', equipo.Nombre);
-//                 var overlay = $('<div class="team-overlay"></div>');
-//                 var teamName = $('<span></span>').text(equipo.Nombre);
-
-//                 overlay.append(teamName);
-//                 teamCard.append(img);
-//                 teamCard.append(overlay);
-//                 catalogo.append(teamCard);
-//             });
-
-//             // Agregar evento de clic a las tarjetas dinámicas
-//             $('.team-card').click(function() {
-//                 var equipo = $(this).data('equipo');
-//                 window.location.href = 'equipaciones.html?equipo=' + equipo;
-//             });
-//         },
-//         error: function() {
-//             alert('Error al recuperar los datos');
-//         }
-//     });
-// });
-
 
 // carrusel
 function slideRight() {
@@ -180,7 +147,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 $(document).ready(function () {
     $.ajax({
-        url: "../Php/Views/getNovedades.php",
+        url: "../Php/Views/getOferta.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
