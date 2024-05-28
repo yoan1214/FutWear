@@ -67,60 +67,6 @@ document.querySelectorAll(".nav-button").forEach((button) => {
     button.addEventListener("click", stopAutoplay);
 });
 
-// navbar
-document.addEventListener('DOMContentLoaded', function() {
-    const isAdmin = sessionStorage.getItem("isAdmin");
-    const userEmail = sessionStorage.getItem("userEmail");
-    
-    // Ocultar todos los elementos por defecto
-    document.querySelectorAll('.logged-in, .no-logged-in, .admin-only').forEach(el => el.style.display = 'none');
-
-    if (userEmail) {
-        // Usuario está logueado
-        document.querySelectorAll('.logged-in').forEach(el => el.style.display = 'block'); // Mostrar elementos comunes logueados
-
-        if (isAdmin === "1") {
-            // Usuario es administrador
-            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'block'); // Mostrar contenido admin y admin-only
-        } else {
-            // Usuario es un usuario registrado no administrador
-            document.querySelectorAll('.user-content').forEach(el => el.style.display = 'block'); // Mostrar contenido de usuario
-        }
-    } else {
-        // Usuario no está logueado
-        document.querySelectorAll('.no-logged-in').forEach(el => el.style.display = 'block'); // Mostrar elementos para no logueados
-    }
-    const logoutButton = document.getElementById('logoutButton');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', function() {
-            // Limpiar sessionStorage
-            sessionStorage.clear();
-            window.location.href = './index.html'; // Redirige al usuario a la página de inicio
-        });
-    } else {
-        console.error("Logout button not found");
-    }
-
-});
-// icono de menu
-document.addEventListener('DOMContentLoaded', function() {
-    var menuIcon = document.getElementById('menu-icon');
-    if (!menuIcon) {
-        console.error('Menu icon not found');
-        return;
-    }
-
-    menuIcon.addEventListener('click', function() {
-        var navbar = document.querySelector('.navbar');
-        if (!navbar) {
-            console.error('Navbar element not found');
-            return;
-        }
-
-        // Toggle the display of the navbar on click
-        navbar.style.display = (navbar.style.display === 'flex' ? 'none' : 'flex');
-    });
-});
 // funcion del texto mostrar mas
 function showMore() {
     document.getElementById("moreText").style.display = "block";
@@ -151,40 +97,47 @@ $(document).ready(function () {
         type: "GET",
         dataType: "json",
         success: function (data) {
-            var catalogo = $("#catalogo-cards");
-            $.each(data, function (index, equipacion) {
-                var card = $('<div class="card"></div>');
+            if (data.length > 0) {
+                var catalogo = $("#catalogo-cards");
+                $.each(data, function (index, equipacion) {
+                    var card = $('<div class="card"></div>');
 
-                var imageContainer = $('<div class="card__image-container"></div>');
-                var img = $("<img>")
-                    .attr("src", equipacion.Foto)
-                    .attr("alt", equipacion.Nombre);
-                imageContainer.append(img);
+                    var imageContainer = $('<div class="card__image-container"></div>');
+                    var img = $("<img>")
+                        .attr("src", equipacion.Foto)
+                        .attr("alt", equipacion.Nombre);
+                    imageContainer.append(img);
 
-                var content = $('<div class="card__content"></div>');
-                var price = $('<p class="card__price"></p>').text('€ ' + equipacion.Precio);
-                var title = $('<p class="card__title"></p>').text(equipacion.Nombre_equipo);
-                var subtitle = $('<p class="card__subtitle"></p>').text(equipacion.Nombre);
+                    var content = $('<div class="card__content"></div>');
+                    var price = $('<p class="card__price"></p>').text('€ ' + equipacion.Precio);
+                    var title = $('<p class="card__title"></p>').text(equipacion.Nombre_equipo);
+                    var subtitle = $('<p class="card__subtitle"></p>').text(equipacion.Nombre);
 
-                content.append(price);
-                content.append(title);
-                content.append(subtitle);
+                    content.append(price);
+                    content.append(title);
+                    content.append(subtitle);
 
-                card.append(imageContainer);
-                card.append(content);
+                    card.append(imageContainer);
+                    card.append(content);
 
-                catalogo.append(card);
-            });
+                    catalogo.append(card);
+                });
 
-            $(".card").click(function () {
-                var equipo = $(this).find(".card__title").text();
-                var equipacion = $(this).find(".card__subtitle").text();
-                window.location.href =
-                    "camiseta.html?equipo=" + equipo + "&equipacion=" + equipacion;
-            });
+                $("#ofertasIndex").show(); // Muestra el div solo si hay ofertas
+
+                $(".card").click(function () {
+                    var equipo = $(this).find(".card__title").text();
+                    var equipacion = $(this).find(".card__subtitle").text();
+                    window.location.href =
+                        "camiseta.html?equipo=" + equipo + "&equipacion=" + equipacion;
+                });
+            } else {
+                $("#ofertasIndex").hide(); // Oculta el div si no hay ofertas
+            }
         },
         error: function () {
             alert("Error al recuperar los datos");
         },
     });
 });
+

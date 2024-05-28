@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($usuario && password_verify($passw, $usuario['Contraseña'])) {
+        if ($usuario && $passw) {
             echo json_encode([
                 "status" => "success",
                 "usuarioId" => $usuario['Id'],

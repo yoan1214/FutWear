@@ -9,8 +9,8 @@ try {
     // Establecer el modo de error de PDO a excepción
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Seleccionar las equipaciones que valen menos de 50
-    $sql = "SELECT * FROM Equipacion WHERE Precio < 50";
+    // Seleccionar las equipaciones que valen menos de 35
+    $sql = "SELECT * FROM Equipacion WHERE Precio <=35";
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
 

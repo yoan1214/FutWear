@@ -9,76 +9,7 @@
     
 </head>
 <body>
-    <header>
-
-        <div class="headermain">
-            <a href="./index.html" class="logo"><img src="../Images/imgs/Futwear-logo.png" alt="logo" id="logo-header" /></a>
-            <!-- navbar -->
-            <ul class="navbar">
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./catalogo.html">Catalogo</a></li>
-                <li><a href="./equipos.html">Equipos</a></li>
-                <li><a href="./novedades.html">Novedades</a></li>
-                <li><a href="./masPopulares.html">Más Vendido</a></li>
-            </ul>
-            <div class="headerdetails">
-
-                <a href="./usuario.html" class="logged-in" >
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"
-                        width="24" height="24">
-                        <path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z"
-                            fill="white" />
-                        <circle cx="12" cy="6" r="6" fill="white" />
-                    </svg>
-                </a>
-                <button id="loginButton" class="no-logged-in button-style"><a href="./login.html">LogIn</a></button>
-                <button id="signupButton" class="no-logged-in button-style"><a href="./signup.html">SignUp</a></button>
-                
-                <a href="./panelAdmin.html" class="admin-only">
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"
-                        width="24" height="24">
-                        <path fill="white"
-                            d="m8,12c-3.309,0-6-2.691-6-6S4.691,0,8,0s6,2.691,6,6-2.691,6-6,6Zm14.5,6c0-.46-.089-.895-.218-1.313l1.416-.816-.998-1.733-1.411.813c-.605-.652-1.393-1.125-2.289-1.33v-1.621h-2v1.621c-.896.205-1.685.678-2.289,1.33l-1.411-.813-.998,1.733,1.416.816c-.129.418-.218.853-.218,1.313s.089.895.218,1.313l-1.416.816.998,1.733,1.411-.813c.605.652,1.393,1.125,2.289,1.33v1.621h2v-1.621c.896-.205,1.685-.678,2.289-1.33l1.411.813.998-1.733-1.416-.816c.129-.418.218-.853.218-1.313Zm-4.5,1.5c-.827,0-1.5-.673-1.5-1.5s.673-1.5,1.5-1.5,1.5.673,1.5,1.5-.673,1.5-1.5,1.5Zm-8-1.5c0-1.459.397-2.822,1.079-4h-6.579c-2.481,0-4.5,2.019-4.5,4.5v5.5h12.721c-1.665-1.466-2.721-3.607-2.721-6Z" />
-                    </svg>
-                </a>
-                <a href="./carrito.html" class="carrito logged-in">
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
-                        <path
-                            d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077Z"
-                            fill="white" />
-                        <circle cx="7" cy="22" r="2" fill="white" />
-                        <circle cx="17" cy="22" r="2" fill="white" />
-                    </svg>
-                </a>
-                <!-- Asegúrate de que el botón esté definido en tu HTML -->
-                <button id="logoutButton" class="logged-in button-style"><a href="">LogOut</a></button>
-
-
-                <div id="menu-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                        id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512"
-                        xml:space="preserve" width="24" height="24">
-                        <g fill="white">
-                            <path
-                                d="M480,224H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
-                            <path
-                                d="M32,138.667h448c17.673,0,32-14.327,32-32s-14.327-32-32-32H32c-17.673,0-32,14.327-32,32S14.327,138.667,32,138.667z" />
-                            <path
-                                d="M480,373.333H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,373.333,480,373.333z" />
-                        </g>
-                    </svg>
-                </div>
-
-            </div>
-        </div>
-        <!-- <div class="headerbot">
-            <p>
-                ENVÍOS GRATUITOS PARA PEDIDOS SUPERIORES A 120 €. 60 DÍAS DE
-                DEVOLUCIONES GRATUITAS.
-            </p>
-        </div> -->
-
-    </header>
+    <div include-html="./header.html"></div>
 <main>
     <div class="user-panel">
         <h1>Bienvenido a tu panel de usuario <span id="displayNombre"></span> </h1>

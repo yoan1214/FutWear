@@ -260,7 +260,12 @@ try {
             ),
         )
     );
-
+  // Insertar usuario
+  $sql_usuario = "INSERT INTO Usuarios (Nombre, Apellidos, Sexo, Correo, Contraseña, Teléfono, Dirección, Código_Postal, Provincia, Método_de_Pago, Admin) 
+  VALUES ('Yoancarlos', 'Bermudez', 'Masculino', 'yoancarlosb@gmail.com', 'bermudez', 666333444, 'Calle Aller', 33600, 'Asturias', 'Paypal', 1)";
+$pdo->exec($sql_usuario);
+echo "Usuario Admin insertado correctamente.<br>";
+    
 
     // Insertar equipos
     foreach ($equipos as $nombre => $foto) {
@@ -275,16 +280,16 @@ try {
         $equipo_id = $pdo->query("SELECT Id FROM Equipo WHERE Nombre = '$nombre_equipo'")->fetchColumn();
 
         foreach ($lista_equipaciones as $nombre_equipacion => $datos) {
-            $precio_base = mt_rand(50, 100); // Ejemplo: precio base aleatorio para demostración
+            $precio_base = 70; // 
             $sql = "INSERT INTO Equipacion (Equipo_Id, Nombre_equipo, Nombre, Precio, Foto) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE Foto = VALUES(Foto), Precio = VALUES(Precio)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$equipo_id, $nombre_equipo, $nombre_equipacion, $precio_base, $datos['Foto']]);
             echo "Equipación $nombre_equipacion para equipo $nombre_equipo insertada o actualizada con éxito.<br>";
 
             $equipacion_id = $pdo->lastInsertId();
-            $tallas = ["S", "M", "L", "XL", "XXL"];
+            $tallas = ["S", "M", "L", "XL"];
             foreach ($tallas as $talla) {
-                $stock_inicial = mt_rand(10, 100); // Stock aleatorio para la demostración
+                $stock_inicial = mt_rand(0, 10); //stock aleatorio
                 $sql_camiseta = "INSERT INTO Camiseta (Equipo_Id, Equipacion_Id, Talla, Stock) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE Stock = VALUES(Stock)";
                 $stmt_camiseta = $pdo->prepare($sql_camiseta);
                 $stmt_camiseta->execute([$equipo_id, $equipacion_id, $talla, $stock_inicial]);

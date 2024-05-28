@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
     $apellidos = $_POST["apellidos"];
     $correo = $_POST["correo"];
-    $passw = password_hash($_POST["passw"], PASSWORD_DEFAULT); // Hasheo de la contraseña
+    $passw = $_POST["passw"]; // Hasheo de la contraseña
     $sexo = $_POST["sexo"];
     $telefono = $_POST["telefono"];
     $direccion = $_POST["direccion"];

@@ -1,0 +1,139 @@
+header {
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: 30px;
+}
+
+.headermain {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  padding: 10px 5%;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+#logo-header {
+  width: 120px;
+  height: auto;
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 5px 0;
+  margin: 0px 15px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #d3b587;
+}
+
+.headerdetails {
+  display: flex;
+  align-items: center;
+}
+
+.headerdetails a,
+.headerdetails svg {
+  flex: 1; /* Make all items take up equal space */
+  margin: 0 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-align: center; /* Center text and SVG inside their containers */
+}
+
+.headerdetails a:hover,
+.headerdetails svg:hover {
+  color: #d3b587;
+}
+
+#menu-icon {
+  font-size: 35px;
+  cursor: pointer;
+  z-index: 10001;
+  display: none;
+}
+
+.button-style {
+  background-color: black;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-style a {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.button-style:hover,
+.button-style a:hover {
+  background-color: #d3b587;
+  color: black;
+}
+
+@media (max-width: 960px) {
+  #menu-icon {
+      display: block;
+  }
+
+  .navbar {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 2%;
+      width: 150px;
+      height: auto;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 10px;
+      row-gap: 1.4rem;
+      padding: 10px;
+      background-color: black;
+      text-align: center;
+  }
+
+  .navbar a {
+      display: block;
+      margin: 12px 0;
+      padding: 0px 25px;
+  }
+
+  .banner {
+      font-size: 0.5em;
+  }
+
+  #buy-button-arsenal {
+      font-size: 0.9em;
+      padding: 8px 16px;
+  }
+
+  .overlay {
+      width: 50%;
+      height: 20%;
+  }
+}
