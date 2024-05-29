@@ -6,7 +6,14 @@ $(document).ready(function() {
         success: function(data) {
             var catalogo = $('#catalogo');
             $.each(data, function(index, equipacion) {
-                var item = $('<div class="item"></div>').attr('data-equipo', equipacion.Nombre_equipo).attr('data-equipacion', equipacion.Nombre);
+                var item = $('<div class="item"></div>')
+                    .attr('data-equipo', equipacion.Nombre_equipo)
+                    .attr('data-equipacion', equipacion.Nombre);
+
+                if (equipacion.Precio <= 35) {
+                    item.addClass('oferta'); // Añadir clase oferta si el precio es menor o igual a 35
+                }
+
                 var img = $('<img>').attr('src', equipacion.Foto).attr('alt', equipacion.Nombre);
                 var nombreEquipo = $('<h2></h2>').text(equipacion.Nombre_equipo);
                 var nombreEquipacion = $('<p></p>').text(equipacion.Nombre);
@@ -22,7 +29,7 @@ $(document).ready(function() {
             $('.item').click(function() {
                 var equipo = $(this).data('equipo');
                 var equipacion = $(this).data('equipacion');
-                window.location.href = 'camiseta.html?equipo=' + equipo + '&equipacion=' + equipacion;
+                window.location.href = 'camiseta.html?equipo=' + encodeURIComponent(equipo) + '&equipacion=' + encodeURIComponent(equipacion);
             });
         },
         error: function() {
@@ -30,4 +37,3 @@ $(document).ready(function() {
         }
     });
 });
-

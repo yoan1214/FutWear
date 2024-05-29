@@ -8,7 +8,7 @@ $(document).ready(function() {
         return;
     }
 
-    let camisetaData; // Define la variable fuera del scope de la solicitud AJAX
+    let camisetaData;
 
     $.ajax({
         url: '../Php/Views/getCamiseta.php',
@@ -16,8 +16,8 @@ $(document).ready(function() {
         data: { equipo: equipo, equipacion: equipacion },
         dataType: 'json',
         success: function(data) {
-            console.log(data); // Verifica los datos que llegan del servidor
-            camisetaData = data; // Asigna los datos a la variable global
+           
+            camisetaData = data;
 
             var detalle = $('#detalle');
             detalle.empty();
@@ -30,15 +30,15 @@ $(document).ready(function() {
             if (data[0].Foto && data[0].Equipacion) {
                 var img = $('<img>').attr('src', data[0].Foto).attr('alt', data[0].Equipacion);
                 var nombreEquipo = $('<h2></h2>').text(data[0].Equipo + ' - ' + data[0].Equipacion);
-                var precioBox = $('<div class="precio-box"></div>').text('Precio: €' + data[0].Precio);
-                
+                var precioBox = $('<div class="precio-box detalle-box"></div>').text('Precio: €' + data[0].Precio);
+
                 detalle.append(img);
                 detalle.append(nombreEquipo);
-                detalle.append(precioBox);
+                
+                var detalleContainer = $('<div class="detalle-container"></div>');
+                detalleContainer.append(precioBox);
 
-                var tallaSelector = $('<select id="talla"></select>');
-                detalle.append(tallaSelector);
-
+                var tallaSelector = $('<select id="talla" class="detalle-box"></select>');
                 $.each(data, function(index, item) {
                     var option = $('<option></option>')
                         .val(item.Talla)
@@ -52,9 +52,12 @@ $(document).ready(function() {
                     tallaSelector.append(option);
                 });
 
+                detalleContainer.append(tallaSelector);
+                detalle.append(detalleContainer);
+
                 // Añadir botón para agregar al carrito
                 detalle.append('<button id="addToCart">Añadir al Carrito</button>');
-                
+
                 $('#addToCart').click(function() {
                     const talla = $('#talla').val();
                     const selectedOption = $('#talla option:selected');
@@ -85,13 +88,17 @@ $(document).ready(function() {
                         type: 'POST',
                         data: {
                             usuarioId: usuarioId,
-                            camisetaId: data[0].CamisetaId, // Usa el ID correcto
+                            camisetaId: data[0].CamisetaId,
                             cantidad: cantidad,
                             precioUnitario: precioUnitario,
                             talla: talla
                         },
                         success: function(response) {
-                            alert(response);
+                            
+                            // Notifica al header que actualice el número de artículos
+                            if (window.actualizarNumeroCarrito) {
+                                window.actualizarNumeroCarrito();
+                            }
                         },
                         error: function(xhr, status, error) {
                             console.error('Error al añadir el item al carrito:', xhr.responseText);

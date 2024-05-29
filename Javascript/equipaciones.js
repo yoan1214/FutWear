@@ -15,6 +15,10 @@ $(document).ready(function() {
                         .attr('data-equipo', equipacion.Nombre_equipo)
                         .attr('data-equipacion', equipacion.Nombre);
 
+                    if (equipacion.Precio <= 35) {
+                        item.addClass('oferta'); // Añadir clase oferta si el precio es menor o igual a 35
+                    }
+
                     var img = $('<img>').attr('src', equipacion.Foto).attr('alt', equipacion.Nombre);
                     var nombreEquipacion = $('<h2></h2>').text(equipacion.Nombre);
                     var precio = $('<p></p>').addClass('precio').text('Precio: €' + equipacion.Precio); // Agregar precio
@@ -35,5 +39,3 @@ $(document).ready(function() {
         }
     });
 });
-
-

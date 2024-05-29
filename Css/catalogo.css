@@ -29,36 +29,49 @@ main {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-top: 50px;
+  width: 100%;
+  
 }
-
+main h1{
+  text-align: center;
+  padding-bottom: 20px;
+}
 #toggleFiltros {
   padding: 10px;
-  background-color: #007bff;
-  color: white;
+background-color: white;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 150px;
   box-sizing: border-box;
   margin: 10px auto;
+  font-weight: bolder;
+  font-size: 16px;
+  border: black 1px solid;
 }
 
 #toggleFiltros:hover {
-  background-color: #0056b3;
+  background-color: #d3b587;
+
 }
 
 #contenedor {
   display: flex;
+  
 }
-
+#filters{
+  text-align: center;
+  margin-top: 60px;
+  margin-left: 60px;
+}
 #filtros {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ 
   max-width: 250px;
 }
 
@@ -78,34 +91,53 @@ main {
 
 .contenido-catalogo {
   flex: 1;
-  padding-left: 20px;
+  
 }
 
 .catalogo {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center; 
+  align-items: center;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .item {
   margin: 10px;
   border: 1px solid #ccc;
   padding: 15px;
-  width: calc(25% - 20px);
+  width: calc(20% - 20px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
 }
 
 .item img {
-  width: 80%;
-  height: auto;
+  width: 180px;
+  height: 180px;
 }
 
 .precio {
   font-weight: bold;
-  color: #007BFF;
-  margin-top: 10px;
+  color: #007BFF; /* Color del precio */
+  margin-top: 10px; /* Espacio entre el nombre y el precio */
 }
+
+/* Estilo para los artículos en oferta */
+.item.oferta {
+  border: 1px solid #ff0000; /* Borde rojo para artículos en oferta */
+  background-color: #fff5f5; /* Fondo ligeramente rosado */
+}
+
+.item.oferta .precio {
+  color: #ff0000; /* Precio en rojo para artículos en oferta */
+}
+

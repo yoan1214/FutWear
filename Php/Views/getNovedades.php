@@ -10,7 +10,7 @@ try {
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Seleccionar las 10 equipaciones más recientes
-    $sql = "SELECT * FROM Equipacion ORDER BY Id DESC LIMIT 15";
+    $sql = "SELECT * FROM Equipacion ORDER BY Id DESC LIMIT 10";
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
 

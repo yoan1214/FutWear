@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         itemElement.setAttribute('data-equipo', item.Nombre_equipo);
                         itemElement.setAttribute('data-equipacion', item.Nombre);
 
+                        if (item.Precio <= 35) {
+                            itemElement.classList.add('oferta'); // Añadir clase oferta si el precio es menor o igual a 35
+                        }
+
                         const img = document.createElement('img');
                         img.src = item.Foto;
                         img.alt = item.Nombre;
@@ -42,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         item.addEventListener('click', function() {
                             const equipo = this.getAttribute('data-equipo');
                             const equipacion = this.getAttribute('data-equipacion');
-                            window.location.href = 'camiseta.html?equipo=' + equipo + '&equipacion=' + equipacion;
+                            window.location.href = 'camiseta.html?equipo=' + encodeURIComponent(equipo) + '&equipacion=' + encodeURIComponent(equipacion);
                         });
                     });
                 } else {

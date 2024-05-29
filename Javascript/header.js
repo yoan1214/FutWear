@@ -11,6 +11,7 @@ if (userEmail) {
     } else {
         document.querySelectorAll('.user-content').forEach(el => el.style.display = 'block'); 
     }
+    actualizarNumeroCarrito(); // Actualizar número de artículos en el carrito
 } else {
     document.querySelectorAll('.no-logged-in').forEach(el => el.style.display = 'block'); 
 }
@@ -62,3 +63,35 @@ searchInput.addEventListener('blur', function() {
         searchIcon.style.display = 'block'; // Mostrar el icono de búsqueda si el input está vacío y pierde el foco
     }
 });
+
+function actualizarNumeroCarrito() {
+    const usuarioId = sessionStorage.getItem("usuarioId");
+
+    if (!usuarioId) {
+        return;
+    }
+
+    $.ajax({
+        url: '../Php/Carrito/getNumeroCarrito.php',
+        type: 'POST',
+        data: { usuarioId: usuarioId },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                const numeroCarrito = $('#numeroCarrito');
+                const cantidad = response.data.numero;
+                if (cantidad > 0) {
+                    numeroCarrito.text(cantidad);
+                    numeroCarrito.css('display', 'inline-block'); // Mostrar el contador
+                } else {
+                    numeroCarrito.css('display', 'none'); // Ocultar el contador
+                }
+            } else {
+                console.error('Error al obtener el número de artículos en el carrito.');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error: ', error);
+        }
+    });
+}

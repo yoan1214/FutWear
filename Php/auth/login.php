@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bd = new PDO($dsn, $usuarioBD, $clave);
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT Id, Contraseña, Admin FROM Usuarios WHERE Correo = :correo LIMIT 1";
+        $sql = "SELECT Id, Nombre, Apellidos, Contraseña, Admin FROM Usuarios WHERE Correo = :correo LIMIT 1";
         $stmt = $bd->prepare($sql);
         $stmt->bindParam(':correo', $correo);
         $stmt->execute();
@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode([
                 "status" => "success",
                 "usuarioId" => $usuario['Id'],
+                "nombre" => $usuario['Nombre'],
+                "apellidos" => $usuario['Apellidos'],
                 "isAdmin" => $usuario['Admin'] ? "1" : "0",
                 "email" => $correo
             ]);

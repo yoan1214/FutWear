@@ -22,6 +22,11 @@ $(document).ready(function() {
                 .attr('data-equipo', equipacion.Nombre_equipo)
                 .attr('data-equipacion', equipacion.Nombre)
                 .attr('data-precio', equipacion.Precio);
+
+            if (equipacion.Precio <= 35) {
+                item.addClass('oferta');
+            }
+
             var img = $('<img>').attr('src', equipacion.Foto).attr('alt', equipacion.Nombre);
             var nombreEquipo = $('<h2></h2>').text(equipacion.Nombre_equipo);
             var nombreEquipacion = $('<p></p>').text(equipacion.Nombre);

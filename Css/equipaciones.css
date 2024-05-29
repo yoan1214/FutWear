@@ -28,36 +28,48 @@ main {
     flex: 1; /* Ocupa todo el espacio disponible */
     display: flex; /* Asegura que el contenido de main también sea flex */
     flex-direction: column; /* Columna para organizar el contenido de main */
-   
+    margin-top: 50px;
 }
   /* Estilo General del Catálogo */
-#catalogo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
-  gap: 20px; /* Espacio entre los items */
+  main h1{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
 }
 
-/* Estilo de cada Item en el Catálogo */
 .item {
-  width: 250px; /* Ancho fijo para cada item */
-  border: 1px solid #ccc; /* Borde sutil */
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para hover */
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: calc(20% - 20px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .item:hover {
-  transform: translateY(-5px); /* Levanta el item al pasar el mouse */
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15); /* Sombra más pronunciada en hover */
+  transform: translateY(-5px);
 }
 
 .item img {
-  width: 100%; /* Asegura que la imagen cubra el ancho del item */
-  height: auto; /* Altura automática para mantener la proporción */
-  border-bottom: 1px solid #eee; /* Línea sutil debajo de la imagen */
+  width: 180px;
+  height: 180px;
+}
+
+.precio {
+  font-weight: bold;
+  color: #007BFF; /* Color del precio */
+  margin-top: 10px; /* Espacio entre el nombre y el precio */
 }
 
 .item h2, .item p {
@@ -65,9 +77,12 @@ main {
   text-align: center; /* Centra el texto horizontalmente */
 }
 
-.precio {
-  color: #d35400; /* Color para el precio, destacando su importancia */
-  font-weight: bold; /* Texto en negrita para el precio */
-  font-size: 1.1em; /* Un tamaño de fuente ligeramente mayor para el precio */
-  margin-top: 10px; /* Espacio adicional antes del precio */
+/* Estilo para los artículos en oferta */
+.item.oferta {
+  border: 1px solid #ff0000; /* Borde rojo para artículos en oferta */
+  background-color: #fff5f5; /* Fondo ligeramente rosado */
+}
+
+.item.oferta .precio {
+  color: #ff0000; /* Precio en rojo para artículos en oferta */
 }

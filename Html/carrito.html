@@ -4,22 +4,43 @@
     <meta charset="UTF-8">
     <title>Carrito de Compras</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <link rel="icon" type="image/png" href="../Images/icons/logo.png">
     <link rel="stylesheet" href="../Css/carrito.css">
 </head>
 <body>
     <div include-html="./header.html"></div>
-    <main>  <div id="carrito">
-        <h2>Carrito de Compras</h2>
-        <div id="carritoItems">
-            <!-- Aquí se mostrarán los items del carrito -->
+    <main>
+        <div id="carrito">
+            <h2>Carrito de Compras</h2>
+            <div id="carritoItems">
+                <!-- Aquí se mostrarán los items del carrito -->
+            </div>
+            <button id="checkoutButton">Pagar Pedido</button>
         </div>
-        <button id="checkoutButton">Finalizar Compra</button>
-       
-    </div></main>
-  
+    </main>
 
     <div include-html="./footer.html"></div> 
+
+    <!-- Modal para el pago -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Selecciona el método de pago</h2>
+            <form id="paymentForm">
+                <label>
+                    <input type="radio" name="paymentMethod" value="paypal" required> PayPal
+                </label><br>
+                <label>
+                    <input type="radio" name="paymentMethod" value="transferencia"> Transferencia Bancaria
+                </label><br>
+                <label>
+                    <input type="radio" name="paymentMethod" value="tarjeta"> Tarjeta de Crédito
+                </label><br>
+                <button type="button" id="completeOrderButton">Pagar</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../Javascript/include.js"></script>  
     <script src="../Javascript/carrito.js"></script>
 </body>

@@ -60,7 +60,7 @@ try {
 $sql_carrito = "CREATE TABLE IF NOT EXISTS Carrito (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Id_Usuario INT,
-    Estado ENUM('Pendiente', 'En proceso', 'Completado') DEFAULT 'Pendiente',
+    Estado ENUM('Pendiente', 'Pagado', 'Completado') DEFAULT 'Pendiente',
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id)
 )";
 
@@ -81,7 +81,7 @@ $sql_pedido = "CREATE TABLE IF NOT EXISTS Pedido (
     Id_Usuario INT,
     Precio_Total DECIMAL(10, 2),
     Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    Estado ENUM('Pendiente', 'En proceso', 'Completado'),
+    Estado ENUM('Pendiente', 'Pagado', 'Completado','Cancelado'),
     FOREIGN KEY (Id_Carrito) REFERENCES Carrito(Id),
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id)
 )";

@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const carritoItems = $('#carritoItems');
                     carritoItems.empty();
                     let total = 0;
+                    let totalCantidad = 0;
                     response.data.forEach(item => {
                         const itemTotal = item.Cantidad * item.Precio_Unitario;
                         total += itemTotal;
+                        totalCantidad += item.Cantidad;
                         carritoItems.append(`
                             <div class="carrito-item" data-camiseta-id="${item.Camiseta_Id}" data-stock="${item.Stock}">
                                 <img src="${item.Foto}" alt="${item.Nombre_Camiseta}">
@@ -31,33 +33,45 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <p>Total: €${itemTotal.toFixed(2)}</p>
                                 </div>
                                 <div>
-                                    <p>Cantidad: <input type="number" value="${item.Cantidad}" data-detalle-carrito-id="${item.Id}" class="cantidad-input"></p>
+                                    <p>Cantidad: <input type="number" value="${item.Cantidad}" data-detalle-carrito-id="${item.Id}" class="cantidad-input" min="1"></p>
                                     <button data-detalle-carrito-id="${item.Id}" class="remove-item-button">Eliminar</button>
                                 </div>
                             </div>
                         `);
                     });
                     $('#totalPrecio').text(`Total: €${total.toFixed(2)}`);
+                    if (totalCantidad === 0) {
+                        $('#checkoutButton').prop('disabled', true).css('display', 'none');
+                    } else {
+                        $('#checkoutButton').prop('disabled', false).css('display', 'block');
+                    }
+                    actualizarNumeroCarrito();
                 } else {
-                    alert('Error al cargar el carrito.');
+                    console.error('Error al cargar los items del carrito.');
+                    $('#checkoutButton').prop('disabled', true).css('display', 'none');
                 }
             },
             error: function(xhr, status, error) {
                 console.error('Error: ', error);
-                alert('Error al cargar el carrito.');
+                $('#checkoutButton').prop('disabled', true).css('display', 'none');
             }
         });
     }
 
     $('#carritoItems').on('change', '.cantidad-input', function() {
         const detalleCarritoId = $(this).data('detalle-carrito-id');
-        const cantidad = $(this).val();
+        let cantidad = $(this).val();
         const stock = $(this).closest('.carrito-item').data('stock');
         const precioUnitario = parseFloat($(this).closest('.carrito-item').find('p:contains("Precio Unitario")').text().replace('Precio Unitario: €', ''));
 
+        if (cantidad < 1) {
+            cantidad = 1;
+            $(this).val(1);
+        }
+
         if (cantidad > stock) {
             alert(`Solo quedan ${stock} unidades de esta camiseta.`);
-            $(this).val(stock); // Revertir a la cantidad máxima disponible en stock
+            $(this).val(stock);
             return;
         }
 
@@ -93,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             success: function(response) {
                 if (response === 'Item eliminado del carrito correctamente') {
                     cargarCarrito();
+                    location.reload();
                 } else {
                     alert(response);
                 }
@@ -104,26 +119,92 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Finalizar Compra
+    // Abrir el modal de pago
     $('#checkoutButton').click(function() {
+        $('#paymentModal').show();
+    });
+
+    // Cerrar el modal de pago
+    $('.close').click(function() {
+        $('#paymentModal').hide();
+    });
+
+    // Completar el pedido
+    $('#completeOrderButton').click(function() {
+        const selectedMethod = $('input[name="paymentMethod"]:checked').val();
+        if (!selectedMethod) {
+            alert("Por favor, selecciona un método de pago.");
+            return;
+        }
+
+        // Actualizar el método de pago del usuario
         $.ajax({
-            url: '../Php/Carrito/finalizarCompra.php',
+            url: '../Php/User/updateMetodoPago.php',
             type: 'POST',
-            data: { usuarioId: usuarioId },
+            data: { usuarioId: usuarioId, metodoPago: selectedMethod },
             success: function(response) {
-                if (response === 'Compra finalizada correctamente') {
-                    alert('Gracias por tu compra!');
-                    cargarCarrito(); // Recargar o limpiar el carrito
+                if (response === 'Método de pago actualizado correctamente') {
+                    $.ajax({
+                        url: '../Php/Carrito/finalizarCompra.php',
+                        type: 'POST',
+                        data: { usuarioId: usuarioId },
+                        success: function(response) {
+                            if (response === 'Compra finalizada correctamente') {
+                                alert("Compra finalizada correctamente. Serás redirigido a la pagina principal.");
+                                window.location.href = './index.html';
+                            } else {
+                                alert(response);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error: ', error);
+                            alert('Error al finalizar la compra.');
+                        }
+                    });
                 } else {
                     alert(response);
                 }
             },
             error: function(xhr, status, error) {
                 console.error('Error: ', error);
-                alert('Error al finalizar la compra.');
+                alert('Error al actualizar el método de pago.');
             }
         });
+
+        $('#paymentModal').hide();
     });
 
     cargarCarrito();
+    
+    function actualizarNumeroCarrito() {
+        const usuarioId = sessionStorage.getItem("usuarioId");
+
+        if (!usuarioId) {
+            return;
+        }
+
+        $.ajax({
+            url: '../Php/Carrito/getNumeroCarrito.php',
+            type: 'POST',
+            data: { usuarioId: usuarioId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    const numeroCarrito = $('#numeroCarrito');
+                    const cantidad = response.data.numero;
+                    if (cantidad > 0) {
+                        numeroCarrito.text(cantidad);
+                        numeroCarrito.css('display', 'inline-block');
+                    } else {
+                        numeroCarrito.css('display', 'none');
+                    }
+                } else {
+                    console.error('Error al obtener el número de artículos en el carrito.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error: ', error);
+            }
+        });
+    }
 });

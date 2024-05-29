@@ -15,7 +15,7 @@ try {
         FROM Equipacion e
         LEFT JOIN Camiseta c ON e.Id = c.Equipacion_Id
         GROUP BY e.Id
-        HAVING total_stock < 25
+        HAVING total_stock < 15
     ";
     $stmt = $conexion->prepare($sql);
     $stmt->execute();

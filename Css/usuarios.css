@@ -28,7 +28,7 @@
       flex: 1; /* Ocupa todo el espacio disponible */
       display: flex; /* Asegura que el contenido de main también sea flex */
       flex-direction: column; /* Columna para organizar el contenido de main */
-     
+      margin-top: 50px;
   }
 
 .container {

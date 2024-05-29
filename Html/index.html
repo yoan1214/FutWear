@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>FutWear</title>
     <link rel="stylesheet" href="../Css/index.css" />
-
+    <link rel="icon" type="image/png" href="../Images/icons/logo.png">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -17,7 +17,7 @@
     <div include-html="./header.html"></div>
 
     <main>
-
+        <div class="mensajeBienvenida">Bienvenido <span></span></div>
         <div class="video-container" data-auto-id="video-player">
             <video id="videoElement" loop="" muted="" playsinline="" autoplay="" fetchpriority="high">
                 <source src="../Video/arsenal.mp4" type="video/mp4">
@@ -32,77 +32,78 @@
         </div>
        
         <div class="container-main">
-            <div id="ofertasIndex">
-            <h2 id="h2_slider">OFERTAS AL 50%</h2>
+                     <!-- cardss -->
+                     <h2 id="h2_slider">Camisetas de la liga</h2>
+                     <section class="slider-container">
+                         <div class="slider-images">
+                             <div class="slider-img">
+                                 <img src="../Images/imgs/isco.png" alt="1" />
+                                 <h1>Isco</h1>
+                                 <a href="./camiseta.html?equipo=Betis&equipacion=Primera%20Equipación" class="details">
+                                     <h2>Real Betis</h2>
+                                     <p>Primera Equipacion</p>
+                                 </a>
+                             </div>
+                             <div class="slider-img">
+                                 <img src="../Images/imgs/jude.png" alt="2" />
+                                 <h1>Jude</h1>
+                                 <a href="./camiseta.html?equipo=Madrid&equipacion=Primera%20Equipación" class="details">
+                                     <h2>Real Madrid</h2>
+                                     <p>Primera Equipacion</p>
+                                 </a>
+                             </div>
+                             <div class="slider-img">
+                                 <img src="../Images/imgs/baena.png" alt="3" />
+                                 <h1>Baena</h1>
+                                 <a href="./camiseta.html?equipo=Villareal&equipacion=Primera%20Equipación" class="details">
+                                     <h2>Villareal</h2>
+                                     <p>Primera Equipacion</p>
+                                 </a>
+                             </div>
+                             <div class="slider-img active">
+                                 <img src="../Images/imgs/lamine.png" alt="4" />
+                                 <h1>Lamine</h1>
+                                 <a href="./camiseta.html?equipo=Barcelona&equipacion=Primera%20Equipación" class="details">
+                                     <h2>Fc Barcelona</h2>
+                                     <p>Primera Equipacion</p>
+                                 </a>
+                             </div>
+                             <div class="slider-img">
+                                 <img src="../Images/imgs/nico.png" alt="5" />
+                                 <h1>Nico</h1>
+                                 <a href="./camiseta.html?equipo=Bilbao&equipacion=Primera%20Equipación" class="details">
+                                     <h2>Athletic Club</h2>
+                                     <p>Primera Equipacion</p>
+                                 </a>
+                             </div>
+                             <div class="slider-img">
+                                 <img src="../Images/imgs/griezmann.png" alt="6" />
+                                 <h1>Grizzi</h1>
+                                 <a href="./camiseta.html?equipo=AtleticoMadrid&equipacion=Primera%20Equipación" class="details">
+                                     <h2>Atletico Madrid</h2>
+                                     <p>Primera Equipacion</p>
+                                 </a>
+                             </div>
+                             <div class="slider-img">
+                                 <img src="../Images/imgs/dovbyk.png" alt="7" />
+                                 <h1>Dovbyk</h1>
+                                 <a href="./camiseta.html?equipo=Girona&equipacion=Primera%20Equipación" class="details">
+                                     <h2>Girona</h2>
+                                     <p>Primera Equipacion</p>
+                                 </a>
+                             </div>
+                         </div>
+                     </section>
+
+
+          
+            <h2 id="h2_slider"><a href="./catalogo.html">CAMISETAS</a> </h2>
             <div class="slider-cards">
-                <div class="cards" id="catalogo-cards">
+                <div class="catalogo" id="catalogo-cards">
         
                 </div>
             </div>
-        </div>
-         <!-- cardss -->
-            <h2 id="h2_slider">Camisetas de la liga</h2>
-            <section class="slider-container">
-                <div class="slider-images">
-                    <div class="slider-img">
-                        <img src="../Images/imgs/isco.png" alt="1" />
-                        <h1>Isco</h1>
-                        <a href="./camiseta.html?equipo=Betis&equipacion=Primera%20Equipación" class="details">
-                            <h2>Real Betis</h2>
-                            <p>Primera Equipacion</p>
-                        </a>
-                    </div>
-                    <div class="slider-img">
-                        <img src="../Images/imgs/jude.png" alt="2" />
-                        <h1>Jude</h1>
-                        <a href="./camiseta.html?equipo=Madrid&equipacion=Primera%20Equipación" class="details">
-                            <h2>Real Madrid</h2>
-                            <p>Primera Equipacion</p>
-                        </a>
-                    </div>
-                    <div class="slider-img">
-                        <img src="../Images/imgs/baena.png" alt="3" />
-                        <h1>Baena</h1>
-                        <a href="./camiseta.html?equipo=Villareal&equipacion=Primera%20Equipación" class="details">
-                            <h2>Villareal</h2>
-                            <p>Primera Equipacion</p>
-                        </a>
-                    </div>
-                    <div class="slider-img active">
-                        <img src="../Images/imgs/lamine.png" alt="4" />
-                        <h1>Lamine</h1>
-                        <a href="./camiseta.html?equipo=Barcelona&equipacion=Primera%20Equipación" class="details">
-                            <h2>Fc Barcelona</h2>
-                            <p>Primera Equipacion</p>
-                        </a>
-                    </div>
-                    <div class="slider-img">
-                        <img src="../Images/imgs/nico.png" alt="5" />
-                        <h1>Nico</h1>
-                        <a href="./camiseta.html?equipo=Bilbao&equipacion=Primera%20Equipación" class="details">
-                            <h2>Athletic Club</h2>
-                            <p>Primera Equipacion</p>
-                        </a>
-                    </div>
-                    <div class="slider-img">
-                        <img src="../Images/imgs/griezmann.png" alt="6" />
-                        <h1>Grizzi</h1>
-                        <a href="./camiseta.html?equipo=AtleticoMadrid&equipacion=Primera%20Equipación" class="details">
-                            <h2>Atletico Madrid</h2>
-                            <p>Primera Equipacion</p>
-                        </a>
-                    </div>
-                    <div class="slider-img">
-                        <img src="../Images/imgs/dovbyk.png" alt="7" />
-                        <h1>Dovbyk</h1>
-                        <a href="./camiseta.html?equipo=Girona&equipacion=Primera%20Equipación" class="details">
-                            <h2>Girona</h2>
-                            <p>Primera Equipacion</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
+       
         </div>
         <div class="teams-container">
             <h2>Camisetas de equipos de fútbol</h2>
@@ -112,19 +113,19 @@
                 <div class="team-card">
                     <img src="../Images/imgs/dybala.jpg" alt="Real Madrid">
                     <div class="team-overlay">
-                        <span>ROMA</span>
+                       <a href="./equipaciones.html?equipo=Roma"> <span>ROMA</span></a>
                     </div>
                 </div>
                 <div class="team-card">
                     <img src="../Images/imgs/son.jpg" alt="FC Barcelona">
                     <div class="team-overlay">
-                        <span>TOTTENHAM</span>
+                        <a href="./equipaciones.html?equipo=Tottenham">  <span>TOTTENHAM</span></a>
                     </div>
                 </div>
                 <div class="team-card">
                     <img src="../Images/imgs/mbappe.webp" alt="Atlético de Madrid">
                     <div class="team-overlay">
-                        <span>PSG</span>
+                        <a href="./equipaciones.html?equipo=Psg">   <span>PSG</span></a>
                     </div>
                 </div>
                 <div class="team-card">
@@ -138,14 +139,6 @@
         </div>
         </div>
         <div class="container-main">
-            <h2 id="h2_slider">CAMISETAS ALTERNATIVAS</h2>
-            <div class="slider-cards">
-                <div class="cards" id="catalogo-destacados">
-                    <!-- Las tarjetas se generarán aquí mediante JavaScript -->
-                </div>
-            </div>
-
-
 
             <section id="infoFutWear">
                 <h1>FutWear – Camisetas de Fútbol Auténticas</h1>

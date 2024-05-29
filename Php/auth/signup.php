@@ -13,14 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $direccion = $_POST["direccion"];
     $codigo_postal = $_POST["codigo_postal"];
     $provincia = $_POST["provincia"];
-    $metodo_pago = $_POST["metodo_pago"];
 
     try {
         $bd = new PDO($dsn, $usuarioBD, $clave);
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Sexo, Teléfono, Dirección, Código_Postal, Provincia, Método_de_Pago, Admin) 
-                VALUES (:nombre, :apellidos, :correo, :passw, :sexo, :telefono, :direccion, :codigo_postal, :provincia, :metodo_pago, false)";
+        $sql = "INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Sexo, Teléfono, Dirección, Código_Postal, Provincia, Admin) 
+                VALUES (:nombre, :apellidos, :correo, :passw, :sexo, :telefono, :direccion, :codigo_postal, :provincia, false)";
         
         $stmt = $bd->prepare($sql);
         $stmt->bindParam(':nombre', $nombre);
@@ -32,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':direccion', $direccion);
         $stmt->bindParam(':codigo_postal', $codigo_postal);
         $stmt->bindParam(':provincia', $provincia);
-        $stmt->bindParam(':metodo_pago', $metodo_pago);
 
         if ($stmt->execute()) {
             $usuarioId = $bd->lastInsertId();

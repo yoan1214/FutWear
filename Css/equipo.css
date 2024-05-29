@@ -28,14 +28,18 @@ main {
     flex: 1; /* Ocupa todo el espacio disponible */
     display: flex; /* Asegura que el contenido de main también sea flex */
     flex-direction: column; /* Columna para organizar el contenido de main */
-   
+    margin-top: 50px;
 }
 
 
-
+main h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
 .catalogo {
     display: flex;
     flex-wrap: wrap;
+justify-content: center;
 }
 .item {
     margin: 20px;

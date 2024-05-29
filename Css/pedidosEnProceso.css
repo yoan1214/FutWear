@@ -28,7 +28,7 @@
       flex: 1; /* Ocupa todo el espacio disponible */
       display: flex; /* Asegura que el contenido de main también sea flex */
       flex-direction: column; /* Columna para organizar el contenido de main */
-     
+      margin-top: 50px;
   }
   
 
@@ -51,8 +51,14 @@ th {
 }
 .button {
     padding: 5px 10px;
-    background-color: #4CAF50;
+  
     color: white;
     border: none;
     cursor: pointer;
+}
+.button.cancelar{
+    background-color: red;
+}
+.button.completar{
+    background-color: #4CAF50;
 }

@@ -15,16 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
             dataType: "json", // Especifica que esperas una respuesta en formato JSON
             success: function(response) {
                 if (response.status === "success") {
-                    // Almacenar correo, usuarioId y estado de admin en sessionStorage
+                    // Almacenar correo, usuarioId, nombre, apellidos y estado de admin en sessionStorage
                     sessionStorage.setItem("userEmail", response.email);
                     sessionStorage.setItem("usuarioId", response.usuarioId);
                     sessionStorage.setItem("isAdmin", response.isAdmin);
+                    sessionStorage.setItem("userName", response.nombre);
+                    sessionStorage.setItem("userSurname", response.apellidos);
 
                     if (response.isAdmin === "1") {
-                        alert("Inicio de sesión de administrador exitoso");
+                        
                         window.location.href = './index.html'; // Cambiar a una página de administrador si necesario
                     } else {
-                        alert("Inicio de sesión exitoso");
+                       
                         window.location.href = './index.html'; // Cambiar a la página de usuario
                     }
                 } else {
@@ -37,4 +39,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-

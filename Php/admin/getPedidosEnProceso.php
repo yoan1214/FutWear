@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bd = new PDO($dsn, $usuarioBD, $clave);
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT Id, Id_Usuario, Fecha, Precio_Total, Estado FROM Pedido WHERE Estado = 'En proceso' ORDER BY Fecha DESC";
+        $sql = "SELECT Id, Id_Usuario, Fecha, Precio_Total, Estado FROM Pedido WHERE Estado = 'Pagado' ORDER BY Fecha DESC";
         $stmt = $bd->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

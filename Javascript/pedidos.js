@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <p><strong>Total:</strong> €${pedido.Precio_Total}</p>
                                 <p><strong>Estado:</strong> ${pedido.Estado}</p>
                                 <button class="detalles-button" data-pedido-id="${pedido.Id}">Ver Detalles</button>
+                                <button class="cancelar-button" data-pedido-id="${pedido.Id}" style="display: ${pedido.Estado === 'Cancelado' ? 'none' : 'inline-block'};">Cancelar Pedido</button>
                                 <div class="detalle-pedido" id="detallePedido-${pedido.Id}" style="display: none;"></div>
                             </div>
                         `);
@@ -72,6 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             detalleDiv.slideToggle();
                         }
                     });
+
+                    $('.cancelar-button').on('click', function() {
+                        const pedidoId = $(this).data('pedido-id');
+                        cancelarPedido(pedidoId);
+                    });
                 } else {
                     alert('Error al cargar los pedidos.');
                 }
@@ -84,4 +90,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     cargarPedidos();
+
+    function cancelarPedido(pedidoId) {
+        if (confirm('¿Estás seguro de cancelar este pedido?')) {
+            $.ajax({
+                url: '../Php/Pedido/deletePedidos.php',
+                type: 'POST',
+                data: { pedidoId: pedidoId, usuarioId: usuarioId },
+                success: function(response) {
+                    const result = JSON.parse(response);
+                    if (result.status === 'success') {
+                        alert(result.message);
+                        location.reload();
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error: ', error);
+                    alert('Error al cancelar el pedido.');
+                }
+            });
+        }
+    }
 });

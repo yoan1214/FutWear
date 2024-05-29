@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <td><img src="${equipacion.Foto}" alt="${equipacion.Nombre_Equipacion}" style="max-width: 100px;"></td>
                                     <td>${tallas}</td>
                                     <td>
-                                        <button class="button edit" onclick="editarCamiseta(${equipacion.Id})">Editar Stock</button>
-                                        <button class="button edit" onclick="editarPrecio(${equipacion.Id})">Editar Precio</button>
-                                        <button class="button delete" onclick="eliminarEquipacion(${equipacion.Id})">Borrar</button>
+                                        <button class="button editCamiseta" onclick="editarCamiseta(${equipacion.Id})">Editar Stock</button>
+                                        <button class="button editPrecio" onclick="editarPrecio(${equipacion.Id})">Editar Precio</button>
+                                        <button class="button delete" onclick="eliminarEquipacion(${equipacion.Id})">Borrar Equipación</button>
                                         <button class="button oferta" onclick="aplicarOferta(${equipacion.Id})">Oferta</button> 
                                     </td>
                                   </tr>`;
@@ -209,10 +209,10 @@ function editarCamiseta(equipacionId) {
         data: JSON.stringify(stockData),
         success: function(response) {
             if (response === 'Camiseta actualizada correctamente') {
-                alert(response);
+                // alert(response);
                 cargarProductos();
             } else {
-                alert(response);
+                // alert(response);
             }
         },
         error: function(xhr, status, error) {
@@ -235,10 +235,10 @@ function editarPrecio(equipacionId) {
         },
         success: function(response) {
             if (response === 'Equipación actualizada correctamente') {
-                alert(response);
+                // alert(response);
                 cargarProductos();
             } else {
-                alert(response);
+                // alert(response);
             }
         },
         error: function(xhr, status, error) {

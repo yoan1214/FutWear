@@ -10,14 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bd = new PDO($dsn, $usuarioBD, $clave);
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Actualizar el estado del carrito a 'En proceso'
-        $sql = "UPDATE Carrito SET Estado = 'En proceso' WHERE Id_Usuario = :usuarioId AND Estado = 'Pendiente'";
+        // Actualizar el estado del carrito a 'Pagado'
+        $sql = "UPDATE Carrito SET Estado = 'Pagado' WHERE Id_Usuario = :usuarioId AND Estado = 'Pendiente'";
         $stmt = $bd->prepare($sql);
         $stmt->bindParam(':usuarioId', $usuarioId);
         $stmt->execute();
 
         // Obtener el ID del carrito actualizado
-        $sql = "SELECT Id FROM Carrito WHERE Id_Usuario = :usuarioId AND Estado = 'En proceso' ORDER BY Id DESC LIMIT 1";
+        $sql = "SELECT Id FROM Carrito WHERE Id_Usuario = :usuarioId AND Estado = 'Pagado' ORDER BY Id DESC LIMIT 1";
         $stmt = $bd->prepare($sql);
         $stmt->bindParam(':usuarioId', $usuarioId);
         $stmt->execute();
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $precioTotal = $stmt->fetchColumn();
 
         // Insertar en la tabla Pedido
-        $sql = "INSERT INTO Pedido (Id_Carrito, Id_Usuario, Precio_Total, Estado) VALUES (:carritoId, :usuarioId, :precioTotal, 'En proceso')";
+        $sql = "INSERT INTO Pedido (Id_Carrito, Id_Usuario, Precio_Total, Estado) VALUES (:carritoId, :usuarioId, :precioTotal, 'Pagado')";
         $stmt = $bd->prepare($sql);
         $stmt->bindParam(':carritoId', $carritoId);
         $stmt->bindParam(':usuarioId', $usuarioId);

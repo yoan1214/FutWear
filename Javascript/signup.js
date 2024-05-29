@@ -21,13 +21,10 @@ document.addEventListener("DOMContentLoaded", function() {
             dataType: "json",
             success: function(response) {
                 if (response.status === "success") {
-                    // Almacenar correo y estado de admin en sessionStorage
-                    sessionStorage.setItem("userEmail", response.email);
-                    sessionStorage.setItem("usuarioId", response.usuarioId);
-                    sessionStorage.setItem("isAdmin", "0"); // Todos los nuevos usuarios no son admins
+            
 
-                    alert("Registro exitoso. Bienvenido!");
-                    window.location.href = './index.html'; // Redirigir a la página principal o de usuario
+                    alert("Registrado, Inicia Sesion para Empezar a comprar");
+                    window.location.href = './login.html'; // Redirigir a la página principal o de usuario
                 } else {
                     alert(response.message); // Muestra el mensaje de respuesta del servidor
                 }
@@ -47,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
             return false;
         }
 
-        if (password.length < 8) {
-            alert("La contraseña debe tener al menos 8 caracteres.");
+        if (password.length < 6) {
+            alert("La contraseña debe tener al menos 6 caracteres.");
             return false;
         }
 

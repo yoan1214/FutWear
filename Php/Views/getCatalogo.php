@@ -9,7 +9,7 @@ try {
     // Establecer el modo de error de PDO a excepción
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $sql = "SELECT * FROM equipacion";
+    $sql = "SELECT * FROM equipacion ";
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
 

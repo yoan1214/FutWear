@@ -13,40 +13,24 @@ footer {
 
 .row {
     display: flex;
-    justify-content: space-around;
-    align-items: center; /* Centra verticalmente las columnas */
+    justify-content: center; /* Center the social media icons */
+    align-items: center; /* Center vertically */
     flex-wrap: wrap;
 }
 
-.col {
-    flex: 1;
-    min-width: 200px; /* Asegura que las columnas no sean demasiado estrechas */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido horizontalmente */
-    text-align: center; /* Centra el texto horizontalmente */
-    margin: 10px 0; /* Añade un margen vertical para espaciado */
-}
-
-.col svg {
-    width: 40px; /* Ajusta el tamaño del icono según sea necesario */
-    height: auto;
-    margin-bottom: 10px; /* Añade espacio entre el icono y el texto */
-}
-
-.social {
+.col.social {
     display: flex;
     flex-direction: row;
 }
 
 .social a {
-    margin: 30px;
+    margin: 0 25px; 
 }
 
 .footerCopyright {
     text-align: center;
-    background-color: #d3b587; /* Color dorado similar al del header */
-    color: #333;
+    background-color: #d3b587; 
+    color: black;
     padding: 10px 0;
     width: 100%;
     margin-top: 20px;
