@@ -270,10 +270,10 @@ try {
     // usuariosbd
     $usuariosBD = [
         [
-            'Nombre' => 'Lucia',
-            'Apellidos' => 'Garcia Fernandez',
+            'Nombre' => 'Carmen',
+            'Apellidos' => 'Fernandez Llaneza',
             'Sexo' => 'Femenino',
-            'Correo' => 'lucia.garcia@gmail.com',
+            'Correo' => 'carmenllaneza@gmail.com',
             'Contraseña' => 'abc123',
             'Teléfono' => 666555444,
             'Dirección' => 'Calle Mayor',
@@ -286,9 +286,9 @@ try {
             'Nombre' => 'Carlos',
             'Apellidos' => 'Lopez Martinez',
             'Sexo' => 'Masculino',
-            'Correo' => 'carlos.lopez@gmail.com',
+            'Correo' => 'charly@gmail.com',
             'Contraseña' => 'password123',
-            'Teléfono' => 665544332,
+            'Teléfono' => 665141232,
             'Dirección' => 'Avenida de la Paz',
             'Código_Postal' => 46001,
             'Provincia' => 'Valencia',
@@ -296,18 +296,45 @@ try {
             'Admin' => 0
         ],
         [
-            'Nombre' => 'Ana',
-            'Apellidos' => 'Sanchez Ruiz',
+            'Nombre' => 'Jonathan',
+            'Apellidos' => 'Ramallo Rubio',
+            'Sexo' => 'Masculino',
+            'Correo' => 'jony.rama@gmail.com',
+            'Contraseña' => '123456',
+            'Teléfono' => 633321987,
+            'Dirección' => 'Calle Mieres',
+            'Código_Postal' => 29401,
+            'Provincia' => 'Cadiz',
+            'Método_de_Pago' => 'Paypal',
+            'Admin' => 0
+        ],
+        [
+            'Nombre' => 'Martin',
+            'Apellidos' => 'Riera Bernardo ',
+            'Sexo' => 'Masculino',
+            'Correo' => 'riera2@gmail.com',
+            'Contraseña' => 'pass123',
+            'Teléfono' => 644324332,
+            'Dirección' => 'Calle Uria',
+            'Código_Postal' => 33001,
+            'Provincia' => 'Asturias',
+            'Método_de_Pago' => 'transferencia',
+            'Admin' => 0
+        ],
+        [
+            'Nombre' => 'Paula',
+            'Apellidos' => 'Alvarez Garcia',
             'Sexo' => 'Femenino',
-            'Correo' => 'ana.sanchez@gmail.com',
-            'Contraseña' => 'mypassword',
-            'Teléfono' => 654321987,
-            'Dirección' => 'Calle Sol',
-            'Código_Postal' => 29001,
-            'Provincia' => 'Malaga',
+            'Correo' => 'paulita@gmail.com',
+            'Contraseña' => '654321',
+            'Teléfono' => 621544332,
+            'Dirección' => 'Barrio salamanca 2',
+            'Código_Postal' => 28013,
+            'Provincia' => 'Madrid',
             'Método_de_Pago' => 'Paypal',
             'Admin' => 0
         ]
+        
     ];
 
     foreach ($usuariosBD as $usuario) {
@@ -347,12 +374,15 @@ try {
             }
         }
     }
-    // Crear pedidos para cada usuario
+   
     // Crear pedidos para cada usuario
     $usuarios_pedidos = [
-        'lucia.garcia@gmail.com' => 5,
-        'carlos.lopez@gmail.com' => 3,
-        'ana.sanchez@gmail.com' => 2,
+        'yoancarlosb@gmail.com' => 6,
+        'riera2@gmail.com' => 3,
+        'paulita@gmail.com' => 5,
+        'charly@gmail.com' => 4,
+        'carmenllaneza@gmail.com' => 1,
+        'jony.rama@gmail.com' => 2,
     ];
 
     $estados_pedidos = ['Pagado', 'Completado', 'Cancelado'];

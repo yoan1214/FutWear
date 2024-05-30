@@ -33,11 +33,11 @@
   
 
 .container {
-    max-width: 800px;
+    
     margin: 0 auto;
 }
 table {
-    width: 100%;
+    width: 105%;
     border-collapse: collapse;
     margin: 20px 0;
 }
