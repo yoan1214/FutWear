@@ -8,7 +8,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bd = new PDO($dsn, $usuarioBD, $clave);
         $bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT Id, Id_Usuario, Fecha, Precio_Total, Estado FROM Pedido WHERE Estado = 'Pagado' ORDER BY Fecha DESC";
+        // Actualiza la consulta para incluir los detalles del usuario
+        $sql = "SELECT Pedido.Id, Pedido.Id_Usuario, Pedido.Fecha, Pedido.Precio_Total, Pedido.Estado, 
+                       Usuarios.Nombre, Usuarios.Correo, Usuarios.Dirección
+                FROM Pedido
+                JOIN Usuarios ON Pedido.Id_Usuario = Usuarios.Id
+                WHERE Pedido.Estado = 'Pagado'
+                ORDER BY Pedido.Fecha DESC";
         $stmt = $bd->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

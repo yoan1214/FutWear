@@ -7,7 +7,7 @@ try {
     $pdo = new PDO($dsn, $usuario, $clave);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected to the database 'futwear' successfully.<br>";
-    // array de equipos
+    // equipos
     $equipos = array(
         "AcMilan" => "../Images/Equipo/AcMilan.png",
         "Arsenal" => "../Images/Equipo/Arsenal.png",
@@ -40,7 +40,7 @@ try {
         "ManCity" => "../Images/Equipo/ManCity.png"
     );
 
-    // array equipaciones
+    // equipaciones
     $equipaciones = array(
         "AcMilan" => array(
             "Primera Equipación" => array(
@@ -260,19 +260,69 @@ try {
             ),
         )
     );
-  // Insertar usuario
-  $sql_usuario = "INSERT INTO Usuarios (Nombre, Apellidos, Sexo, Correo, Contraseña, Teléfono, Dirección, Código_Postal, Provincia, Método_de_Pago, Admin) 
-  VALUES ('Yoancarlos', 'Bermudez', 'Masculino', 'yoancarlosb@gmail.com', 'bermudez', 666333444, 'Calle Aller', 33600, 'Asturias', 'Paypal', 1)";
-$pdo->exec($sql_usuario);
-echo "Usuario Admin insertado correctamente.<br>";
-    
+    // Usuario Admin
+    $sql_usuario = "INSERT INTO Usuarios (Nombre, Apellidos, Sexo, Correo, Contraseña, Teléfono, Dirección, Código_Postal, Provincia, Método_de_Pago, Admin) 
+    VALUES ('Yoancarlos', 'Bermudez', 'Masculino', 'yoancarlosb@gmail.com', '123456', 666333444, 'Calle Aller', 33600, 'Asturias', 'Paypal', 1)";
+    $pdo->exec($sql_usuario);
+    echo "Usuario Admin insertado correctamente.<br>";
+    // Usuarios 
+
+    // usuariosbd
+    $usuariosBD = [
+        [
+            'Nombre' => 'Lucia',
+            'Apellidos' => 'Garcia Fernandez',
+            'Sexo' => 'Femenino',
+            'Correo' => 'lucia.garcia@gmail.com',
+            'Contraseña' => 'abc123',
+            'Teléfono' => 666555444,
+            'Dirección' => 'Calle Mayor',
+            'Código_Postal' => 28013,
+            'Provincia' => 'Madrid',
+            'Método_de_Pago' => 'Tarjeta',
+            'Admin' => 0
+        ],
+        [
+            'Nombre' => 'Carlos',
+            'Apellidos' => 'Lopez Martinez',
+            'Sexo' => 'Masculino',
+            'Correo' => 'carlos.lopez@gmail.com',
+            'Contraseña' => 'password123',
+            'Teléfono' => 665544332,
+            'Dirección' => 'Avenida de la Paz',
+            'Código_Postal' => 46001,
+            'Provincia' => 'Valencia',
+            'Método_de_Pago' => 'transferencia',
+            'Admin' => 0
+        ],
+        [
+            'Nombre' => 'Ana',
+            'Apellidos' => 'Sanchez Ruiz',
+            'Sexo' => 'Femenino',
+            'Correo' => 'ana.sanchez@gmail.com',
+            'Contraseña' => 'mypassword',
+            'Teléfono' => 654321987,
+            'Dirección' => 'Calle Sol',
+            'Código_Postal' => 29001,
+            'Provincia' => 'Malaga',
+            'Método_de_Pago' => 'Paypal',
+            'Admin' => 0
+        ]
+    ];
+
+    foreach ($usuariosBD as $usuario) {
+        $sql_usuario = "INSERT INTO Usuarios (Nombre, Apellidos, Sexo, Correo, Contraseña, Teléfono, Dirección, Código_Postal, Provincia, Método_de_Pago, Admin) 
+    VALUES ('" . $usuario['Nombre'] . "', '" . $usuario['Apellidos'] . "', '" . $usuario['Sexo'] . "', '" . $usuario['Correo'] . "', '" . $usuario['Contraseña'] . "', " . $usuario['Teléfono'] . ", '" . $usuario['Dirección'] . "', " . $usuario['Código_Postal'] . ", '" . $usuario['Provincia'] . "', '" . $usuario['Método_de_Pago'] . "', " . $usuario['Admin'] . ")";
+        $pdo->exec($sql_usuario);
+    }
+    echo "Usuarios insertados correctamente.";
 
     // Insertar equipos
     foreach ($equipos as $nombre => $foto) {
         $sql = "INSERT INTO Equipo (Nombre, Foto) VALUES (?, ?) ON DUPLICATE KEY UPDATE Foto = VALUES(Foto)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$nombre, $foto]);
-        echo "Equipo $nombre insertado o actualizado con éxito.<br>";
+        echo "Equipo $nombre insertado con éxito.<br>";
     }
 
     // Insertar equipaciones y camisetas
@@ -284,17 +334,63 @@ echo "Usuario Admin insertado correctamente.<br>";
             $sql = "INSERT INTO Equipacion (Equipo_Id, Nombre_equipo, Nombre, Precio, Foto) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE Foto = VALUES(Foto), Precio = VALUES(Precio)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$equipo_id, $nombre_equipo, $nombre_equipacion, $precio_base, $datos['Foto']]);
-            echo "Equipación $nombre_equipacion para equipo $nombre_equipo insertada o actualizada con éxito.<br>";
+            echo "Equipación $nombre_equipacion para equipo $nombre_equipo insertada con éxito.<br>";
 
             $equipacion_id = $pdo->lastInsertId();
             $tallas = ["S", "M", "L", "XL"];
             foreach ($tallas as $talla) {
-                $stock_inicial = mt_rand(0, 10); //stock aleatorio
+                $stock_inicial = mt_rand(1, 10); //stock aleatorio
                 $sql_camiseta = "INSERT INTO Camiseta (Equipo_Id, Equipacion_Id, Talla, Stock) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE Stock = VALUES(Stock)";
                 $stmt_camiseta = $pdo->prepare($sql_camiseta);
                 $stmt_camiseta->execute([$equipo_id, $equipacion_id, $talla, $stock_inicial]);
-                echo "Camiseta talla $talla para equipación $nombre_equipacion insertada o actualizada con stock $stock_inicial.<br>";
+                echo "Camiseta talla $talla para equipación $nombre_equipacion insertada con stock de $stock_inicial.<br>";
             }
+        }
+    }
+    // Crear pedidos para cada usuario
+    // Crear pedidos para cada usuario
+    $usuarios_pedidos = [
+        'lucia.garcia@gmail.com' => 5,
+        'carlos.lopez@gmail.com' => 3,
+        'ana.sanchez@gmail.com' => 2,
+    ];
+
+    $estados_pedidos = ['Pagado', 'Completado', 'Cancelado'];
+
+    foreach ($usuarios_pedidos as $correo => $num_pedidos) {
+        $id_usuario = $pdo->query("SELECT Id FROM Usuarios WHERE Correo = '$correo'")->fetchColumn();
+
+        for ($i = 0; $i < $num_pedidos; $i++) {
+            $estado = $estados_pedidos[array_rand($estados_pedidos)];
+
+            // Crear carrito
+            $sql_carrito = "INSERT INTO Carrito (Id_Usuario, Estado) VALUES ($id_usuario, 'Pendiente')";
+            $pdo->exec($sql_carrito);
+            $id_carrito = $pdo->lastInsertId();
+
+            // Añadir detalles del carrito
+            $precio_total = 0;
+            $num_items = mt_rand(1, 10); // Número aleatorio de artículos en el carrito
+            for ($j = 0; $j < $num_items; $j++) {
+                $camiseta_id = $pdo->query("SELECT Id FROM Camiseta ORDER BY RAND() LIMIT 1")->fetchColumn();
+                $cantidad = 1;
+                $precio_unitario = 70;
+                $talla = ['S', 'M', 'L', 'XL'][array_rand(['S', 'M', 'L', 'XL'])];
+                $sql_detalle_carrito = "INSERT INTO DetalleCarrito (Carrito_Id, Camiseta_Id, Cantidad, Precio_Unitario, Talla) VALUES ($id_carrito, $camiseta_id, $cantidad, $precio_unitario, '$talla')";
+                $pdo->exec($sql_detalle_carrito);
+
+                $precio_total += $cantidad * $precio_unitario;
+            }
+
+            // Actualizar el estado del carrito a 'Pagado'
+            $sql_update_carrito = "UPDATE Carrito SET Estado = 'Pagado' WHERE Id = $id_carrito";
+            $pdo->exec($sql_update_carrito);
+
+            // Crear pedido
+            $sql_pedido = "INSERT INTO Pedido (Id_Carrito, Id_Usuario, Precio_Total, Estado) VALUES ($id_carrito, $id_usuario, $precio_total, '$estado')";
+            $pdo->exec($sql_pedido);
+
+            echo "Pedido creado para el usuario $correo con estado $estado y precio total $precio_total.<br>";
         }
     }
 } catch (PDOException $e) {

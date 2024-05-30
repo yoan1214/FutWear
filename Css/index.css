@@ -269,6 +269,7 @@ padding: 40px;
   bottom: -100px;
   left: 50%; /* Centramos horizontalmente */
   transform: translateX(-50%); /* Ajustamos la posición */
+
 }
 
 .details h2 {
@@ -276,7 +277,7 @@ padding: 40px;
   font-weight: 900;
   text-align: center;
   line-height: 30px;
-  color: white;
+  color: black;
   text-transform: uppercase;
   transition: 0.7s ease;
   display: none;
@@ -287,7 +288,7 @@ padding: 40px;
   font-weight: 800;
   text-align: center;
   line-height: 24px;
-  color: white;
+  color: black;
   text-transform: uppercase;
   transition: 0.7s ease;
   display: none;
