@@ -69,7 +69,6 @@ main {
 
 
 
-/* video */
 .video-container {
   width: 100%;
   position: relative;
@@ -82,15 +81,13 @@ video {
 
 .overlay {
   position: absolute;
-  top: 80%; /* Adjust to move vertically */
-  left: 30%; /* Adjust to move horizontally */
+  top: 65%; /* Adjusted for better centering */
+  left: 50%; /* Adjusted for better centering */
   transform: translate(-50%, -50%); /* Centering */
-  width: 25%;
-  height: 25%;
+  width: 80%; /* Adjusted to make it more responsive */
   display: flex;
   justify-content: center;
   align-items: center;
- 
   padding: 10px;
   box-sizing: border-box;
 }
@@ -107,7 +104,7 @@ video {
   margin-top: 20px;
 }
 
-#buy-button-arsenal{
+#buy-button-arsenal {
   background-color: white;
   color: black;
   font-weight: 700;
@@ -115,8 +112,53 @@ video {
   border: none;
   cursor: pointer;
   font-size: 1em;
- 
 }
+
+@media (max-width: 1200px) {
+  .banner h1 {
+    font-size: 1.2em; 
+  }
+  #buy-button-arsenal {
+    font-size: 0.9em; 
+  }
+}
+
+@media (max-width: 992px) {
+  .overlay {
+    width: 90%; 
+  }
+  .banner h1 {
+    font-size: 1em; 
+  }
+  #buy-button-arsenal {
+    font-size: 0.85em; 
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    width: 95%; 
+  }
+  .banner h1 {
+    font-size: 1em; 
+  }
+  #buy-button-arsenal {
+    font-size: 0.8em; 
+  }
+}
+
+@media (max-width: 576px) {
+  .overlay {
+    width: 100%; 
+  }
+  .banner h1 {
+    font-size: 1em;
+  }
+  #buy-button-arsenal {
+    font-size: 0.75em; /
+  }
+}
+
 
 /* contenedor donde va todo */
 .container-main {
@@ -190,190 +232,16 @@ video {
   border: 2px solid red;
 }
 
-/* el slider de jugadores */
-#h2_slider{
-padding: 40px;
+#h2_slider {
+  padding: 20px;
   text-align: center;
   text-transform: uppercase;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 900;
 }
-#h2_slider a{
+#h2_slider a {
   color: black;
 }
-.slider-container {
-  width: 100%;
-  height: 80vh;
-  background-image: url('../Images/imgs/trofeoliga.jpg');
-  background-color: white;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
-
-.slider-images {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center; /* Centramos las imágenes */
-}
-
-.slider-images img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.slider-img {
-  width: 90px;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  transition: 0.7s ease;
-}
-
-.slider-images .slider-img:first-child, .slider-images .slider-img:last-child {
-  height: 300px;
-}
-
-.slider-images .slider-img:nth-child(2), .slider-images .slider-img:nth-child(6) {
-  height: 350px;
-}
-
-.slider-images .slider-img:nth-child(3), .slider-images .slider-img:nth-child(4), .slider-images .slider-img:nth-child(5) {
-  height: 400px;
-}
-
-.slider-img h1 {
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center; /* Centramos el texto */
-  text-transform: uppercase;
-  color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(270deg); /* Centramos y rotamos */
-  transition: 0.7s ease;
-}
-
-.details {
-  position: absolute;
-  bottom: -100px;
-  left: 50%; /* Centramos horizontalmente */
-  transform: translateX(-50%); /* Ajustamos la posición */
-
-}
-
-.details h2 {
-  font-size: 20px;
-  font-weight: 900;
-  text-align: center;
-  line-height: 30px;
-  color: black;
-  text-transform: uppercase;
-  transition: 0.7s ease;
-  display: none;
-}
-
-.details p {
-  font-size: 14px;
-  font-weight: 800;
-  text-align: center;
-  line-height: 24px;
-  color: black;
-  text-transform: uppercase;
-  transition: 0.7s ease;
-  display: none;
-}
-
-.slider-img.active {
-  width: 400px !important;
-  height: 400px !important;
-}
-
-.slider-img.active h1 {
-  display: none;
-}
-
-.slider-img.active .details p, .slider-img.active .details h2 {
-  display: block;
-}
-
-/* Media queries para asegurarnos de que el diseño sea responsive */
-@media (max-width: 1200px) {
-  .slider-img {
-    width: 70px;
-  }
-
-  .slider-images .slider-img:first-child, .slider-images .slider-img:last-child {
-    height: 250px;
-  }
-
-  .slider-images .slider-img:nth-child(2), .slider-images .slider-img:nth-child(6) {
-    height: 300px;
-  }
-
-  .slider-images .slider-img:nth-child(3), .slider-images .slider-img:nth-child(4), .slider-images .slider-img:nth-child(5) {
-    height: 350px;
-  }
-
-  .slider-img.active {
-    width: 300px !important;
-    height: 300px !important;
-  }
-
-  .details {
-    left: 50%;
-    bottom: -80px;
-  }
-
-  .details h2, .details p {
-    font-size: 18px;
-    line-height: 28px;
-  }
-}
-
-@media (max-width: 768px) {
-  .slider-img {
-    width: 50px;
-  }
-
-  .slider-images .slider-img:first-child, .slider-images .slider-img:last-child {
-    height: 200px;
-  }
-
-  .slider-images .slider-img:nth-child(2), .slider-images .slider-img:nth-child(6) {
-    height: 250px;
-  }
-
-  .slider-images .slider-img:nth-child(3), .slider-images .slider-img:nth-child(4), .slider-images .slider-img:nth-child(5) {
-    height: 300px;
-  }
-
-  .slider-img.active {
-    width: 250px !important;
-    height: 250px !important;
-  }
-
-  .details {
-    left: 50%;
-    bottom: -60px;
-  }
-
-  .details h2, .details p {
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-
 
 /* cards equipo */
 .teams-container {
