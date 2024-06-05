@@ -31,15 +31,14 @@ main {
   padding: 20px;
   margin-top: 50px;
   width: 100%;
-  
 }
-main h1{
+main h1 {
   text-align: center;
   padding-bottom: 20px;
 }
 #toggleFiltros {
   padding: 10px;
-background-color: white;
+  background-color: white;
   color: black;
   border: none;
   border-radius: 5px;
@@ -54,25 +53,27 @@ background-color: white;
 
 #toggleFiltros:hover {
   background-color: #d3b587;
-
 }
 
 #contenedor {
   display: flex;
-  
+  flex-direction: column;
+  align-items: center;
 }
-#filters{
+
+#filters {
   text-align: center;
-  margin-top: 60px;
-  margin-left: 60px;
+  margin-top: 20px;
+  width: 100%;
 }
+
 #filtros {
   display: flex;
   flex-direction: column;
   padding: 20px;
   border-radius: 5px;
- 
   max-width: 250px;
+  width: 100%;
 }
 
 #filtros label {
@@ -91,7 +92,7 @@ background-color: white;
 
 .contenido-catalogo {
   flex: 1;
-  
+  width: 100%;
 }
 
 .catalogo {
@@ -107,7 +108,7 @@ background-color: white;
   margin: 10px;
   border: 1px solid #ccc;
   padding: 15px;
-  width: calc(20% - 20px);
+  width: calc(100% - 40px); /* Default width for small screens */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -116,28 +117,58 @@ background-color: white;
   transition: transform 0.3s;
 }
 
-.item:hover {
-  transform: translateY(-5px);
-}
-
 .item img {
-  width: 180px;
-  height: 180px;
+  width: 100%;
+  height: auto;
+  max-width: 180px;
 }
 
 .precio {
   font-weight: bold;
-  color: #007BFF; /* Color del precio */
-  margin-top: 10px; /* Espacio entre el nombre y el precio */
+  color: #007BFF;
+  margin-top: 10px;
 }
 
-/* Estilo para los artículos en oferta */
 .item.oferta {
-  border: 1px solid #ff0000; /* Borde rojo para artículos en oferta */
-  background-color: #fff5f5; /* Fondo ligeramente rosado */
+  border: 1px solid #ff0000;
+  background-color: #fff5f5;
 }
 
 .item.oferta .precio {
-  color: #ff0000; /* Precio en rojo para artículos en oferta */
+  color: #ff0000;
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 600px) {
+  #contenedor {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  #filters {
+    margin-top: 60px;
+    margin-left: 60px;
+    width: auto;
+  }
+  #filtros {
+    max-width: 250px;
+  }
+}
+
+@media (min-width: 768px) {
+  .item {
+    width: calc(45% - 20px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .item {
+    width: calc(30% - 20px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .item {
+    width: calc(20% - 20px);
+  }
 }
 

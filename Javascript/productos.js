@@ -286,3 +286,12 @@ function mostrarModal(modalId) {
 function cerrarModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const userEmail = sessionStorage.getItem("userEmail");
+
+    if (!userEmail) {
+        window.location.href = './login.html';
+        return;
+    }
+})

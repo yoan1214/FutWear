@@ -16,21 +16,25 @@
   list-style: none;
   text-decoration: none;
 }
- html, body {
-    height: 100%; 
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* Los elementos se organizan en una columna */
-    font-family: "Poppins";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins";
 }
+
 main {
-    flex: 1; /* Ocupa todo el espacio disponible */
-    display: flex; /* Asegura que el contenido de main también sea flex */
-    flex-direction: column; /* Columna para organizar el contenido de main */
-    margin-top: 50px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding: 20px;
 }
-main h1{
+
+main h1 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -38,46 +42,76 @@ main h1{
 .catalogo {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
   width: 90%;
 }
 
 .item {
-margin: 10px;
-border: 1px solid #ccc;
-padding: 15px;
-width: calc(20% - 20px);
-box-sizing: border-box;
-display: flex;
-flex-direction: column;
-align-items: center;
-cursor: pointer;
-transition: transform 0.3s;
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: calc(100% - 40px); /* Default width for small screens */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .item:hover {
-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .item img {
-  width: 180px;
-  height: 180px;
-}
-.precio {
-font-weight: bold;
-color: #007BFF;
-margin-top: 10px;
+  width: 100%;
+  height: auto;
+  max-width: 180px;
+  max-height: 180px;
 }
 
-/* Estilo para los artículos en oferta */
+.precio {
+  font-weight: bold;
+  color: #007BFF;
+  margin-top: 10px;
+}
+
 .item.oferta {
-border: 1px solid #ff0000; /* Borde rojo para artículos en oferta */
-background-color: #fff5f5; /* Fondo ligeramente rosado */
+  border: 1px solid #ff0000;
+  background-color: #fff5f5;
 }
 
 .item.oferta .precio {
-color: #ff0000; /* Precio en rojo para artículos en oferta */
+  color: #ff0000;
 }
 
+/* Media Queries for Responsiveness */
+@media (min-width: 600px) {
+  #contenedor {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .item {
+    width: calc(48% - 20px); /* Width for larger screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .item {
+    width: calc(45% - 20px); /* Width for larger screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .item {
+    width: calc(30% - 20px); /* Width for larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .item {
+    width: calc(20% - 20px); /* Width for larger screens */
+  }
+}

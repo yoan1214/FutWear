@@ -16,59 +16,71 @@
     list-style: none;
     text-decoration: none;
   }
-   html, body {
-      height: 100%; 
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column; /* Los elementos se organizan en una columna */
-      font-family: "Poppins";
-  }
-  main {
-      flex: 1; /* Ocupa todo el espacio disponible */
-      display: flex; /* Asegura que el contenido de main también sea flex */
-      flex-direction: column; /* Columna para organizar el contenido de main */
-      margin-top: 50px;
+  
+  html, body {
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Los elementos se organizan en una columna */
+    font-family: "Poppins";
   }
   
-
-.container {
-    
+  main {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    display: flex; /* Asegura que el contenido de main también sea flex */
+    flex-direction: column; /* Columna para organizar el contenido de main */
+    margin-top: 50px;
+  }
+  
+  .container {
+    max-width: 1200px;
     margin: 0 auto;
-}
-table {
-    width: 105%;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  table {
+    width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-}
-th, td {
+    overflow-x: auto; /* Adds horizontal scrolling */
+    display: block; /* Ensures the table can scroll */
+  }
+  
+  th, td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
-}
-th {
+  }
+  
+  th {
     background-color: #f2f2f2;
-}
-.button {
+  }
+  
+  .button {
     padding: 5px 10px;
-  background-color:  #d3b587;
+    background-color: #d3b587;
     color: black;
     border: none;
     cursor: pointer;
     font-weight: 500;
-}
-.button.cancelar{
+  }
+  
+  .button.cancelar {
     background-color: red;
-}
-.button.completar{
+  }
+  
+  .button.completar {
     background-color: #4CAF50;
-}
-/* modal.css */
-.modal {
+  }
+  
+  /* modal.css */
+  .modal {
     display: none; 
     position: fixed; 
     z-index: 1; 
-    padding-top: 60px; 
+    padding-top: 250px;
     left: 0;
     top: 0;
     width: 100%;
@@ -76,26 +88,65 @@ th {
     overflow: auto; 
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
-}
-
-.modal-content {
+  }
+  
+  .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; 
-}
-
-.close {
+    width: 80%;
+  }
+  
+  .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 10px;
+    }
+    
+    table {
+      width: 100%;
+      display: block; /* Ensures the table can scroll */
+    }
+    
+    th, td {
+      padding: 8px;
+      font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    
+    .button {
+      padding: 5px 8px;
+      font-size: 14px; /* Adjust button size for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    th, td {
+      padding: 5px;
+      font-size: 12px; /* Further adjust font size for very small screens */
+    }
+    
+    .button {
+      padding: 4px 6px;
+      font-size: 12px; /* Further adjust button size for very small screens */
+    }
+    
+    .modal-content {
+      width: 90%;
+    }
+  }
+  

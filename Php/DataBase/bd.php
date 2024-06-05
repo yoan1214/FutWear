@@ -71,8 +71,8 @@ $sql_detalle_carrito = "CREATE TABLE IF NOT EXISTS DetalleCarrito (
     Cantidad INT,
     Precio_Unitario DECIMAL(10, 2),
     Talla VARCHAR(10),
-    FOREIGN KEY (Carrito_Id) REFERENCES Carrito(Id),
-    FOREIGN KEY (Camiseta_Id) REFERENCES Camiseta(Id)
+    FOREIGN KEY (Carrito_Id) REFERENCES Carrito(Id) ON DELETE CASCADE,
+    FOREIGN KEY (Camiseta_Id) REFERENCES Camiseta(Id) ON DELETE CASCADE
 )";
 
 $sql_pedido = "CREATE TABLE IF NOT EXISTS Pedido (

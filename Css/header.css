@@ -50,11 +50,12 @@ header {
   display: flex;
   align-items: center;
 }
+
 .headerdetails .tooltip {
   position: relative;
   display: flex;
-
 }
+
 .headerdetails a,
 .headerdetails svg {
   flex: 1; /* Make all items take up equal space */
@@ -65,6 +66,7 @@ header {
   transition: color 0.3s ease;
   text-align: center; /* Center text and SVG inside their containers */
 }
+
 .numero-carrito {
   background-color: red;
   color: white;
@@ -77,90 +79,115 @@ header {
   display: none; /* Ocultar el contador por defecto */
 }
 
-
 #menu-icon {
   font-size: 35px;
   cursor: pointer;
   z-index: 10001;
   display: none;
 }
-#searchIcon{
+
+#searchIcon {
   cursor: pointer;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: auto;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 3px 8px; /* Smaller padding for a smaller tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 30px; /* Position below the icon */
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.8rem; /* Smaller font size */
+  visibility: hidden;
+  width: auto;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 3px 8px; /* Smaller padding for a smaller tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 30px; /* Position below the icon */
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.8rem; /* Smaller font size */
 }
 
 /* Tooltip arrow */
 .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%; /* Arrow at the top */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #555 transparent;
+  content: "";
+  position: absolute;
+  bottom: 100%; /* Arrow at the top */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
 }
 
 /* Show the tooltip text when hovering over the tooltip container */
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
+/* Media Queries for Responsiveness */
 @media (max-width: 960px) {
   #menu-icon {
-      display: block;
+    display: block;
   }
 
   .navbar {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 2%;
-      width: 150px;
-      height: auto;
-      flex-direction: column;
-      justify-content: flex-start;
-      border-radius: 10px;
-      row-gap: 1.4rem;
-      padding: 10px;
-      background-color: black;
-      text-align: center;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 2%;
+    width: 150px;
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 10px;
+    row-gap: 1.4rem;
+    padding: 10px;
+    background-color: black;
+    text-align: center;
   }
 
   .navbar a {
-      display: block;
-      margin: 12px 0;
-      padding: 0px 25px;
+    display: block;
+    margin: 12px 0;
+    padding: 0px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  #logo-header {
+    width: 100px;
   }
 
-  .banner {
-      font-size: 0.5em;
+  .navbar a {
+    font-size: 1rem;
+    margin: 5px 10px;
   }
 
-  #buy-button-arsenal {
-      font-size: 0.9em;
-      padding: 8px 16px;
+  .headerdetails a,
+  .headerdetails svg {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .headermain {
+    padding: 10px 1%;
   }
 
-  .overlay {
-      width: 50%;
-      height: 20%;
+  #logo-header {
+    width: 80px;
+  }
+
+  .navbar a {
+    font-size: 0.9rem;
+    margin: 5px 5px;
+  }
+
+  .headerdetails a,
+  .headerdetails svg {
+    font-size: 0.9rem;
+    margin: 5px 0;
   }
 }

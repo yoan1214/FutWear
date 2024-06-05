@@ -16,67 +16,82 @@
     list-style: none;
     text-decoration: none;
   }
-   html, body {
-      height: 100%; 
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column; /* Los elementos se organizan en una columna */
-      font-family: "Poppins";
-  }
-  main {
-      flex: 1; /* Ocupa todo el espacio disponible */
-      display: flex; /* Asegura que el contenido de main también sea flex */
-      flex-direction: column; /* Columna para organizar el contenido de main */
-      margin-top: 50px;
+  
+  html, body {
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins";
   }
   
-
-.container {
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  
+  .container {
     width: 80%;
     margin: 0 auto;
-}
-.button-container {
+  }
+  
+  .button-container {
     margin: 20px 0;
-}
-.button {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap */
+    gap: 10px; /* Adds space between buttons */
+  }
+  
+  .button {
     padding: 10px 20px;
-    width: 150px; /* Ensures all buttons have the same width */
-    text-align: center; /* Centers the text inside the buttons */
+    width: 150px;
+    text-align: center;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-right: 10px;
     transition: background-color 0.3s;
     background-color: #28a745;
-}
-table {
+  }
+  
+  table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-}
-th, td {
+    overflow-x: auto;
+    display: block;
+  }
+  
+  th, td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
-}
-th {
+  }
+  
+  th {
     background-color: #f2f2f2;
-}
-.button.editCamiseta {
+  }
+  
+  .button.editCamiseta {
     background-color: skyblue;
-}
-.button.editPrecio {
+  }
+  
+  .button.editPrecio {
     background-color: green;
-}
-.button.delete {
+  }
+  
+  .button.delete {
     background-color: red;
-}
-.button.oferta {
+  }
+  
+  .button.oferta {
     background-color: #f0ad4e;
-}
-.modal {
+  }
+  
+  .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -85,49 +100,99 @@ th {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
-}
-.modal-content {
+    padding-top: 250px;
+    margin: 0 auto;
+  }
+  
+  .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-}
-.close {
+  }
+  
+  .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-
-
-    .stock-zero {
-        background-color: red;
-        color: white;
-        padding: 5px;
+  }
+  
+  .stock-zero {
+    background-color: red;
+    color: white;
+    padding: 5px;
+  }
+  
+  .stock-low {
+    background-color: yellow;
+    padding: 5px;
+  }
+  
+  .stock-input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .stock-input-container label {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+  .stock-input {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      padding: 0 10px;
     }
-    .stock-low {
-        background-color: yellow;
-        padding: 5px;
+  
+    .button {
+      width: 100%;
+      margin-bottom: 10px;
     }
-    .stock-input-container {
-        display: flex;
-        align-items: center;
+  
+    .button-container {
+      flex-direction: column;
+      align-items: center;
     }
-    .stock-input-container label {
-        margin-right: 5px;
-        font-weight: bold;
+  
+    th, td {
+      padding: 8px;
+      font-size: 14px;
     }
-    .stock-input {
-        flex: 1;
-        padding: 5px;
+  
+    .modal-content {
+      width: 90%;
     }
+  }
+  
+  @media (max-width: 480px) {
+    th, td {
+      padding: 5px;
+      font-size: 12px;
+    }
+  
+    .button {
+      padding: 8px 10px;
+      font-size: 12px;
+    }
+  
+    .modal-content {
+      width: 95%;
+    }
+  }
+  
