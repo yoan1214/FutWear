@@ -3,7 +3,7 @@
 ## Requisitos del Sistema
 - Windows
 - XAMPP (incluye Apache, MySQL, PHP)
-- Navegador web (Chrome, Firefox, etc.)
+- Navegador web (Chrome, Opera, etc.)
 
 ## Instalación
 

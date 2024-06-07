@@ -269,19 +269,7 @@ try {
 
     // usuariosbd
     $usuariosBD = [
-        [
-            'Nombre' => 'Carmen',
-            'Apellidos' => 'Fernandez Llaneza',
-            'Sexo' => 'Femenino',
-            'Correo' => 'carmenllaneza@gmail.com',
-            'Contraseña' => 'abc123',
-            'Teléfono' => 666555444,
-            'Dirección' => 'Calle Mayor',
-            'Código_Postal' => 28013,
-            'Provincia' => 'Madrid',
-            'Método_de_Pago' => 'Tarjeta',
-            'Admin' => 0
-        ],
+
         [
             'Nombre' => 'Carlos',
             'Apellidos' => 'Lopez Martinez',
@@ -321,19 +309,7 @@ try {
             'Método_de_Pago' => 'transferencia',
             'Admin' => 0
         ],
-        [
-            'Nombre' => 'Paula',
-            'Apellidos' => 'Alvarez Garcia',
-            'Sexo' => 'Femenino',
-            'Correo' => 'paulita@gmail.com',
-            'Contraseña' => '654321',
-            'Teléfono' => 621544332,
-            'Dirección' => 'Barrio salamanca 2',
-            'Código_Postal' => 28013,
-            'Provincia' => 'Madrid',
-            'Método_de_Pago' => 'Paypal',
-            'Admin' => 0
-        ]
+        
         
     ];
 
@@ -377,11 +353,9 @@ try {
    
     // Crear pedidos para cada usuario
     $usuarios_pedidos = [
-        'yoancarlosb@gmail.com' => 6,
+        'yoancarlosb@gmail.com' => 3,
         'riera2@gmail.com' => 3,
-        'paulita@gmail.com' => 5,
-        'charly@gmail.com' => 4,
-        'carmenllaneza@gmail.com' => 1,
+        'charly@gmail.com' => 1,
         'jony.rama@gmail.com' => 2,
     ];
 
