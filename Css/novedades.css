@@ -52,7 +52,7 @@ main h1 {
   margin: 10px;
   border: 1px solid #ccc;
   padding: 15px;
-  width: calc(100% - 40px); /* Default width for small screens */
+  width: calc(100% - 40px); 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -87,7 +87,7 @@ main h1 {
   color: #ff0000;
 }
 
-/* Media Queries for Responsiveness */
+
 @media (min-width: 600px) {
   #contenedor {
     flex-direction: row;

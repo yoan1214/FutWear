@@ -73,13 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // carrusel
 function slideRight() {
     const carousel = document.getElementById("carousel");
-    const itemWidth = carousel.querySelector(".carrusel").offsetWidth + 20; // Ajusta el valor 20 si es necesario
+    const itemWidth = carousel.querySelector(".carrusel").offsetWidth + 20; 
     carousel.scrollBy({ left: itemWidth, behavior: "smooth" });
 }
 
 function slideLeft() {
     const carousel = document.getElementById("carousel");
-    const itemWidth = carousel.querySelector(".carrusel").offsetWidth + 20; // Ajusta el valor 20 si es necesario
+    const itemWidth = carousel.querySelector(".carrusel").offsetWidth + 20; 
     carousel.scrollBy({ left: -itemWidth, behavior: "smooth" });
 }
 

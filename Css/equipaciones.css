@@ -91,7 +91,6 @@ main h1 {
   color: #ff0000;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
   .item {
     width: calc(33.333% - 20px);

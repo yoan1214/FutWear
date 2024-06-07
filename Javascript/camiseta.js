@@ -75,7 +75,7 @@ $(document).ready(function() {
 
                     const usuarioId = sessionStorage.getItem("usuarioId");
                     if (!usuarioId) {
-                        alert("Por favor, inicia sesión primero.");
+                       
                         window.location.href = './login.html';
                         return;
                     }

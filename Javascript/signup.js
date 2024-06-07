@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Llamada AJAX con jQuery
         $.ajax({
-            url: "../Php/auth/signup.php", // Asegúrate de poner aquí la URL correcta de tu script PHP
+            url: "../Php/auth/signup.php", 
             type: "POST",
             data: formData,
             dataType: "json",
@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
             
 
                     alert("Registrado, Inicia Sesion para Empezar a comprar");
-                    window.location.href = './login.html'; // Redirigir a la página principal o de usuario
+                    window.location.href = './login.html'; 
                 } else {
-                    alert(response.message); // Muestra el mensaje de respuesta del servidor
+                    alert(response.message);
                 }
             },
             error: function(xhr, status, error) {

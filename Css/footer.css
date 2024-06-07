@@ -8,13 +8,13 @@ footer {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; /* Ajusta el padding según sea necesario */
+    padding: 0 20px; 
 }
 
 .row {
     display: flex;
-    justify-content: center; /* Center the social media icons */
-    align-items: center; /* Center vertically */
+    justify-content: center; 
+    align-items: center; 
     flex-wrap: wrap;
 }
 

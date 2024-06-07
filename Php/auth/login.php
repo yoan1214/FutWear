@@ -1,8 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST["correo"];
-    $passw = $_POST["passw"];  // La contraseña proporcionada por el usuario.
-
+    $passw = $_POST["passw"];  
     $dsn = "mysql:dbname=futwear;host=127.0.0.1";
     $usuarioBD = "root";
     $clave = "";

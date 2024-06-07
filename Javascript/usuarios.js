@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Redirigir a la página de inicio si no es administrador
     if (isAdmin !== "1") {
         window.location.href = './index.html';
-        return; // Detener la ejecución del script
+        return; 
     }
 });
 

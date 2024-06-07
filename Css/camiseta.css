@@ -22,14 +22,14 @@ html, body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Los elementos se organizan en una columna */
+  flex-direction: column;
   font-family: "Poppins";
 }
 
 main {
-  flex: 1; /* Ocupa todo el espacio disponible */
-  display: flex; /* Asegura que el contenido de main también sea flex */
-  flex-direction: column; /* Columna para organizar el contenido de main */
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
   margin-top: 50px;
 }
 

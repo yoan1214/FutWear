@@ -120,7 +120,7 @@ function cerrarModal() {
     $('#detallesModal').hide();
 }
 
-// Cerrar modal al hacer clic en "x"
+
 $('.close').click(function() {
     cerrarModal();
 });

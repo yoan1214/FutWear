@@ -1,3 +1,4 @@
+/* Importación de la fuente Poppins */
 @font-face {
   font-family: "Poppins";
   src: url("../Fonts/Poppins/Poppins-Regular.ttf") format("truetype");
@@ -9,43 +10,48 @@
   font-weight: 700;
 }
 
+/* Reset básico de estilos */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el total del ancho y alto */
   list-style: none;
   text-decoration: none;
 }
 
+/* Estilos globales para HTML y BODY */
 html, body {
   height: 100%; 
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
-  font-family: "Poppins";
+  flex-direction: column; /* Permite que los elementos hijos se organicen en una columna */
+  font-family: "Poppins"; /* Aplica la fuente Poppins a todo el documento */
 }
 
+/* Estilos para el header principal */
 header {
   width: 100%;
   min-height: 100px;
   margin-bottom: 30px;
 }
 
+/* Estilos para el contenedor principal del header */
 .headermain {
-  position: fixed;
+  position: fixed; /* Mantiene el header fijo en la parte superior de la pantalla */
   width: 100%;
   top: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1000; /* Asegura que el header se superponga a otros elementos */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Espacia los elementos del header uniformemente */
   background: black;
   padding: 10px 5%;
   color: white;
 }
 
+/* Estilos para el logo */
 .logo {
   display: flex;
   align-items: center;
@@ -56,10 +62,12 @@ header {
   height: auto;
 }
 
+/* Estilos para la barra de navegación */
 .navbar {
   display: flex;
 }
 
+/* Estilos para los enlaces de la barra de navegación */
 .navbar a {
   font-size: 1.1rem;
   font-weight: 500;
@@ -67,63 +75,71 @@ header {
   margin: 0px 15px;
   color: white;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease; /* Transición suave del color al hacer hover */
 }
 
+/* Efecto hover para los enlaces de la barra de navegación */
 .navbar a:hover {
-  color: #d3b587;
+  color: #d3b587; /* Cambia el color del texto al pasar el ratón por encima */
 }
 
+/* Estilos para los detalles del header (iconos, etc.) */
 .headerdetails {
   display: flex;
   align-items: center;
 }
 
+/* Tooltip container */
 .headerdetails .tooltip {
   position: relative;
   display: flex;
 }
 
+/* Estilos para los enlaces y SVG dentro del headerdetails */
 .headerdetails a,
 .headerdetails svg {
   flex: 1;
-  margin: 0 5px; /* Reduce margin */
-  font-size: 1rem; /* Reduce font size */
+  margin: 0 5px; 
+  font-size: 1rem; 
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease; /* Transición suave del color al hacer hover */
   text-align: center;
 }
 
+/* Estilos específicos para los SVG dentro de headerdetails */
 .headerdetails .tooltip svg {
-  font-size: 1.2rem; /* Reduce icon size */
+  font-size: 1.2rem;
 }
 
+/* Estilos para el contador del carrito */
 .numero-carrito {
   background-color: red;
   color: white;
-  border-radius: 50%;
+  border-radius: 50%; /* Hace que el contador tenga forma redonda */
   padding: 2px 6px;
   font-size: 0.8em;
   position: absolute;
   top: 0;
   right: 0;
-  display: none;
+  display: none; /* Inicialmente oculto */
 }
 
+/* Estilos para el icono del menú (versión móvil) */
 #menu-icon {
-  font-size: 30px; /* Reduce icon size */
+  font-size: 30px; 
   cursor: pointer;
   z-index: 10001;
-  display: none;
+  display: none; /* Oculto por defecto, se mostrará en pantallas pequeñas */
 }
 
+/* Estilos para el icono de búsqueda */
 #searchIcon {
   cursor: pointer;
-  font-size: 1.2rem; /* Reduce icon size */
+  font-size: 1.2rem; 
 }
 
-/* Tooltip text */
+/* Estilos para el texto de los tooltips */
 .tooltip .tooltiptext {
   visibility: hidden;
   width: auto;
@@ -140,7 +156,7 @@ header {
   font-size: 0.8rem;
 }
 
-/* Tooltip arrow */
+/* Flecha de los tooltips */
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
@@ -152,13 +168,13 @@ header {
   border-color: transparent transparent #555 transparent;
 }
 
-/* Show the tooltip text when hovering over the tooltip container */
+/* Mostrar tooltips al hacer hover */
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
 
-/* Media Queries for Responsiveness */
+/* Media queries para dispositivos con ancho máximo de 960px */
 @media (max-width: 960px) {
   #menu-icon {
     display: block;
@@ -171,7 +187,7 @@ header {
     right: 2%;
     width: 150px;
     height: auto;
-    flex-direction: column;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna */
     justify-content: flex-start;
     border-radius: 10px;
     row-gap: 1.4rem;
@@ -187,48 +203,50 @@ header {
   }
 }
 
+/* Media queries para dispositivos con ancho máximo de 480px */
 @media (max-width: 480px) {
   #logo-header {
-    width: 80px; /* Reduce logo size */
+    width: 80px;
   }
 
   .navbar a {
-    font-size: 0.9rem; /* Reduce font size */
-    margin: 5px 5px; /* Reduce margin */
+    font-size: 0.9rem; 
+    margin: 5px 5px; 
   }
 
   .headerdetails a,
   .headerdetails svg {
-    font-size: 0.9rem; /* Reduce font size */
-    margin: 3px 5px; /* Further reduce margin */
+    font-size: 0.9rem; 
+    margin: 3px 5px; 
   }
 
   .headerdetails .tooltip svg {
-    font-size: 1rem; /* Further reduce icon size */
+    font-size: 1rem; 
   }
 }
 
+/* Media queries para dispositivos con ancho máximo de 320px */
 @media (max-width: 320px) {
   .headermain {
     padding: 10px 1%;
   }
 
   #logo-header {
-    width: 60px; /* Further reduce logo size */
+    width: 60px;
   }
 
   .navbar a {
-    font-size: 0.8rem; /* Further reduce font size */
-    margin: 3px 2px; /* Further reduce margin */
+    font-size: 0.8rem; 
+    margin: 3px 2px; 
   }
 
   .headerdetails a,
   .headerdetails svg {
-    font-size: 0.8rem; /* Further reduce font size */
-    margin: 2px 3px; /* Further reduce margin */
+    font-size: 0.8rem; 
+    margin: 2px 3px; 
   }
 
   .headerdetails .tooltip svg {
-    font-size: 0.9rem; /* Further reduce icon size */
+    font-size: 0.9rem; 
   }
 }

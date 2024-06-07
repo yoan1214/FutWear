@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
     loginForm.addEventListener("submit", function(event) {
         event.preventDefault(); // Previene el envío tradicional del formulario
 
-        // Recolección de datos del formulario utilizando jQuery
+       
         const formData = $(this).serialize();
 
-        // Llamada AJAX con jQuery para el inicio de sesión
+       
         $.ajax({
-            url: "../Php/auth/login.php", // Asegúrate de poner aquí la URL correcta de tu script PHP
+            url: "../Php/auth/login.php", 
             type: "POST",
             data: formData,
-            dataType: "json", // Especifica que esperas una respuesta en formato JSON
+            dataType: "json", 
             success: function(response) {
                 if (response.status === "success") {
                     // Almacenar correo, usuarioId, nombre, apellidos y estado de admin en sessionStorage
@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     if (response.isAdmin === "1") {
                         
-                        window.location.href = './index.html'; // Cambiar a una página de administrador si necesario
+                        window.location.href = './index.html'; 
                     } else {
                        
-                        window.location.href = './index.html'; // Cambiar a la página de usuario
+                        window.location.href = './index.html'; 
                     }
                 } else {
-                    alert(response.message); // Muestra el error devuelto por el servidor
+                    alert(response.message); 
                 }
             },
             error: function(xhr, status, error) {

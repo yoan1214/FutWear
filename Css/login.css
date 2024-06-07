@@ -45,8 +45,8 @@
     border-radius: 15px;
     width: 20%;
     text-align: center;
-    background-color: #f9f9f9; /* Asegura que el formulario tenga un fondo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra suave */
+    background-color: #f9f9f9; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
   
   .incio-sesion-row {
@@ -128,7 +128,7 @@
     text-decoration: underline;
   }
   
-  /* Media Queries for Responsiveness */
+ 
   @media (max-width: 768px) {
     .formulario {
       width: 40%;

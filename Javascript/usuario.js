@@ -16,17 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
         dataType: 'json',
         success: function(response) {
             if (response.status === 'success') {
-                // Asegúrate de que los IDs coinciden con los definidos en el HTML
+               
                 $('#displayNombre').text(response.data.Nombre);
                 $('#displayApellidos').text(response.data.Apellidos);
-                $('#displayCorreo').text(userEmail); // Suponiendo que quieres mostrar el correo también
+                $('#displayCorreo').text(userEmail); 
                 $('#displayTelefono').text(response.data.Teléfono);
                 $('#displayDireccion').text(response.data.Dirección);
                 $('#displayCodigoPostal').text(response.data.Código_Postal);
                 $('#displayProvincia').text(response.data.Provincia);
                 $('#displayMetodoPago').text(response.data.Método_de_Pago);
 
-                // Rellenar el formulario con los datos del usuario para su posible actualización
                 $('#telefono').val(response.data.Teléfono);
                 $('#direccion').val(response.data.Dirección);
                 $('#codigo_postal').val(response.data.Código_Postal);
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             success: function(response) {
                 if (response === 'Datos actualizados correctamente') {
                     alert('Datos actualizados correctamente');
-                    // Opcionalmente, puedes actualizar también los datos mostrados inmediatamente después de la actualización exitosa
+                  
                     $('#displayTelefono').text($('#telefono').val());
                     $('#displayDireccion').text($('#direccion').val());
                     $('#displayCodigoPostal').text($('#codigo_postal').val());
