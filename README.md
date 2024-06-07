@@ -59,6 +59,17 @@
 #### │ ├── User/
 #### │ │ └── (archivos de usuario)
 #### │ └── Views/
-#### │ └── (archivos de vistas)
+#### │  └── (archivos de vistas)
 #### └── Video/
-#### └── (archivos de video)
+####    └── (archivos de video)
+
+## Tecnologías Utilizadas
+- HTML5
+- CSS3
+- JavaScript
+- PHP
+- MySQL
+
+## Autor
+Yoancarlos Bermúdez Bermúdez
+ 
