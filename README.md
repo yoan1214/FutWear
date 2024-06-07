@@ -29,38 +29,39 @@
 1. Abra su navegador web y vaya a [http://localhost/futwear/Html/index.html](http://localhost/futwear/Html/index.html).
 2. El proyecto debería funcionar correctamente y mostrar la interfaz de usuario.
 
-futwear/
-├── Css/
-│ └── (archivos CSS)
-├── Fonts/
-│ └── (archivos de fuentes)
-├── Html/
-│ └── (archivos HTML)
-├── Images/
-│ ├── Equipaciones/
-│ ├── Equipo/
-│ ├── icons/
-│ └── imgs/
-├── Javascript/
-│ └── (archivos JavaScript)
-├── Php/
-│ ├── admin/
-│ │ └── (archivos de administración)
-│ ├── auth/
-│ │ └── (archivos de autenticación)
-│ ├── Carrito/
-│ │ └── (archivos del carrito de compras)
-│ ├── DataBase/
-│ │ ├── bd.php
-│ │ └── datosBD.php
-│ ├── Pedido/
-│ │ └── (archivos de pedidos)
-│ ├── User/
-│ │ └── (archivos de usuario)
-│ └── Views/
-│ └── (archivos de vistas)
-└── Video/
-└── (archivos de video)
+## Estructura del Proyecto
+#### futwear/
+#### ├── Css/
+#### │ └── (archivos CSS)
+#### ├── Fonts/
+#### │ └── (archivos de fuentes)
+#### ├── Html/
+#### │ └── (archivos HTML)
+#### ├── Images/
+#### │ ├── Equipaciones/
+#### │ ├── Equipo/
+#### │ ├── icons/
+#### │ └── imgs/
+#### ├── Javascript/
+#### │ └── (archivos JavaScript)
+#### ├── Php/
+#### │ ├── admin/
+#### │ │ └── (archivos de administración)
+#### │ ├── auth/
+#### │ │ └── (archivos de autenticación)
+#### │ ├── Carrito/
+#### │ │ └── (archivos del carrito de compras)
+#### │ ├── DataBase/
+#### │ │ ├── bd.php
+#### │ │ └── datosBD.php
+#### │ ├── Pedido/
+#### │ │ └── (archivos de pedidos)
+#### │ ├── User/
+#### │ │ └── (archivos de usuario)
+#### │ └── Views/
+#### │  └── (archivos de vistas)
+#### └── Video/
+####    └── (archivos de video)
 
 ## Tecnologías Utilizadas
 - HTML5
