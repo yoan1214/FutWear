@@ -18,8 +18,8 @@
 ### Paso 3: Configurar la Base de Datos
 1. Descargue o clone este repositorio en su directorio `htdocs` dentro de la carpeta de instalación de XAMPP:
     
-    cd C:\xampp\htdocs
-    git clone https://github.com/yoan1214/FutWear.git
+#### cd C:\xampp\htdocs
+#### git clone https://github.com/yoan1214/FutWear.git
    
 2. Abra su navegador web y vaya a las siguientes URLs para ejecutar los scripts de creación e inserción de datos en la base de datos:
     - [Crear Base de Datos y Tablas](http://localhost/futwear/Php/DataBase/bd.php): Este script creará la base de datos y las tablas necesarias.
